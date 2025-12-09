@@ -24,19 +24,14 @@
             theme: {
                 extend: {
                     colors: {
-                        // MÀU GỐC (Dùng cho điểm nhấn nhỏ, button)
                         'neon-flare': '#F43F5E', 
                         'cyber-mint': '#2DD4BF', 
                         'electric-purple': '#A855F7',
                         'mocha-mousse': '#A07E66',
-
-                        // MÀU AN TOÀN (SAFE MODE) - Giảm bão hòa cho Text/Border trên nền tối
-                        'neon-flare-safe': '#FDA4AF', // Rose-300
-                        'cyber-mint-safe': '#5EEAD4', // Teal-300
-                        'electric-purple-safe': '#D8B4FE', // Purple-300
-                        'mocha-mousse-safe': '#D4C5BC', // Beige pha xám
-
-                        // NỀN TỐI CHUẨN MATERIAL
+                        'neon-flare-safe': '#FDA4AF', 
+                        'cyber-mint-safe': '#5EEAD4', 
+                        'electric-purple-safe': '#D8B4FE', 
+                        'mocha-mousse-safe': '#D4C5BC', 
                         'void-dark': '#121212', 
                     },
                     fontFamily: {
@@ -53,13 +48,12 @@
 
     <style>
         body {
-            background-color: #121212; /* Void Dark */
-            color: #F1F5F9; /* Slate 100 */
+            background-color: #121212;
+            color: #F1F5F9;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- 3. NEO-GRADIENTS ANIMATION (ALIVE BACKGROUND) --- */
         .animated-mesh {
             background-color: #121212;
             background-image: 
@@ -76,13 +70,12 @@
             100% { background-position: 50% 100%; }
         }
 
-        /* --- GLASSMORPHISM & BENTO GRID STYLES --- */
         .glass-panel {
-            background: rgba(30, 41, 59, 0.3); /* Giảm opacity để hòa trộn tốt hơn */
+            background: rgba(30, 41, 59, 0.3);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 1.5rem; /* Bo góc lớn hơn cho Bento */
+            border-radius: 1.5rem;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer; 
@@ -103,16 +96,9 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Typography Lỏng (Fluid Type) Helpers */
-        .fluid-h1 {
-            font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
-            line-height: 1.1;
-        }
-        .fluid-p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-        }
+        .fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); line-height: 1.1; }
+        .fluid-p { font-size: clamp(1rem, 2vw, 1.25rem); }
 
-        /* Modal Transitions */
         #info-modal { transition: opacity 0.3s ease, visibility 0.3s; }
         #info-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
         #info-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
@@ -126,11 +112,9 @@
         }
         #info-modal.visible-modal .modal-content { transform: scale(1); }
 
-        /* Mobile Menu */
         #mobile-menu { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; max-height: 0; opacity: 0; overflow: hidden; }
         #mobile-menu.open { max-height: 300px; opacity: 1; }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #121212; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -164,13 +148,12 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION: FLUID TYPOGRAPHY -->
+    <!-- HERO SECTION -->
     <header class="pt-32 pb-24 px-6 max-w-7xl mx-auto text-center reveal active relative z-10">
         <span class="inline-block py-1.5 px-4 rounded-full bg-white/5 border border-white/10 text-cyber-mint-safe text-xs font-bold tracking-widest mb-8 hover:bg-white/10 transition uppercase">
             Báo Cáo Xu Hướng 2025
         </span>
         
-        <!-- 1. FLUID TYPOGRAPHY H1 -->
         <h1 class="fluid-h1 font-display font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyber-mint-safe via-white to-neon-flare-safe pb-4 drop-shadow-2xl">
             GEN Z VÀ CƠN BÃO<br> "ĐA KHỦNG HOẢNG"
         </h1>
@@ -188,17 +171,16 @@
 
     <main class="max-w-7xl mx-auto px-6 pb-24 space-y-32 relative z-10">
 
-        <!-- SECTION 1: BENTO GRID LAYOUT -->
+        <!-- SECTION 1: BENTO GRID -->
         <section id="context" class="reveal">
             <div class="flex items-end justify-between mb-8">
                 <h2 class="text-3xl font-display font-bold text-white">Bối Cảnh Vĩ Mô</h2>
                 <span class="text-xs text-slate-500 font-mono hidden sm:block">GRID-AREA: ASYMMETRICAL</span>
             </div>
 
-            <!-- 2. BENTO GRID IMPLEMENTATION -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[minmax(180px,auto)]">
                 
-                <!-- Bento Item 1: Economy (Wide) -->
+                <!-- Economy -->
                 <div class="glass-panel p-8 lg:col-span-2 flex flex-col justify-between group" onclick="openModal('economy')">
                     <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 text-neon-flare-safe"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                     <div class="flex justify-between items-start">
@@ -215,14 +197,14 @@
                     </div>
                 </div>
 
-                <!-- Bento Item 2: Tech (Tall) -->
+                <!-- Tech -->
                 <div class="glass-panel p-8 lg:row-span-2 border-t-4 border-t-cyber-mint/50 flex flex-col group" onclick="openModal('tech')">
                     <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition text-cyber-mint-safe"><i class="fa-regular fa-eye"></i></div>
                     <div class="h-12 w-12 rounded-2xl bg-cyber-mint/10 flex items-center justify-center text-cyber-mint-safe text-2xl mb-auto">
                         <i class="fa-solid fa-mobile-screen"></i>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mt-6 mb-2">Kiệt Sức Số</h3>
-                    <p class="text-slate-400 text-sm mb-4">Hiện tượng "Mụ mẫm não bộ" (Brain Rot) do nội dung ngắn.</p>
+                    <p class="text-slate-400 text-sm mb-4">Hiện tượng "Brain Rot" lan rộng do tiêu thụ nội dung ngắn.</p>
                     
                     <div class="bg-white/5 p-4 rounded-xl border border-white/5 mt-auto">
                         <span class="text-xs text-slate-500 uppercase">Ngưỡng Nguy Hiểm</span>
@@ -231,7 +213,7 @@
                     </div>
                 </div>
 
-                <!-- Bento Item 3: Asia (Standard) -->
+                <!-- Asia -->
                 <div class="glass-panel p-8 flex flex-col justify-between group" onclick="openModal('asia')">
                     <div class="h-10 w-10 rounded-full bg-electric-purple/10 flex items-center justify-center text-electric-purple-safe text-xl mb-4">
                         <i class="fa-solid fa-earth-asia"></i>
@@ -242,14 +224,14 @@
                     </div>
                 </div>
 
-                <!-- Bento Item 4: Quote (Filler) -->
+                <!-- Quote -->
                 <div class="glass-panel p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center text-center col-span-1 md:col-span-1 lg:col-span-1">
                     <p class="font-display text-slate-400 italic text-sm">
                         "Chúng ta không lười biếng,<br>chúng ta kiệt sức."
                     </p>
                 </div>
 
-                <!-- Bento Item 5: Treatment Gap (Wide) -->
+                <!-- Gap -->
                 <div class="glass-panel p-6 lg:col-span-2 flex items-center justify-between group" onclick="openModal('gap')">
                     <div class="flex items-center gap-4">
                         <div class="h-12 w-12 rounded-full border-2 border-red-500/30 flex items-center justify-center text-red-400 text-xl font-bold">
@@ -268,12 +250,11 @@
             </div>
         </section>
 
-        <!-- SECTION 2: CHARTS (DATA STORYTELLING) -->
+        <!-- SECTION 2: CHARTS -->
         <section id="data" class="space-y-12 reveal">
             <h2 class="text-3xl font-display font-bold text-white border-l-4 border-neon-flare-safe pl-4">Dữ Liệu Biết Nói</h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Gender Chart -->
                 <div class="lg:col-span-2 glass-panel p-6" onclick="openModal('gender')">
                     <h3 class="text-lg font-semibold mb-6 text-white flex justify-between">
                         Tỷ lệ Trầm cảm/Lo âu kéo dài
@@ -284,7 +265,6 @@
                     </div>
                 </div>
                 
-                <!-- Insight Box -->
                 <div class="glass-panel p-8 bg-gradient-to-b from-neon-flare/10 to-transparent border-t-2 border-t-neon-flare-safe" onclick="openModal('gender')">
                     <h4 class="text-neon-flare-safe font-bold text-xl mb-4">Góc Nhìn Sâu</h4>
                     <p class="text-slate-300 text-sm leading-7 mb-4">
@@ -294,7 +274,6 @@
                 </div>
             </div>
 
-            <!-- Screen Time Chart -->
             <div class="glass-panel p-6" onclick="openModal('screen_risk')">
                 <h3 class="text-lg font-semibold mb-2 text-white">Ngưỡng Rủi Ro: 3 Giờ/Ngày</h3>
                 <p class="text-xs text-slate-400 mb-6 pb-2 border-b border-white/5">Mối quan hệ Liều lượng - Đáp ứng (Dose-Response)</p>
@@ -304,7 +283,7 @@
             </div>
         </section>
 
-        <!-- SECTION 3: MECHANISM (DIAGRAM) -->
+        <!-- SECTION 3: MECHANISM -->
         <section id="mechanism" class="reveal">
             <div class="glass-panel p-8 md:p-12 relative overflow-hidden" onclick="openModal('mechanism')">
                 <div class="absolute top-0 right-0 w-96 h-96 bg-electric-purple/20 rounded-full blur-[120px]"></div>
@@ -321,7 +300,6 @@
                         </ul>
                     </div>
                     
-                    <!-- Diagram Re-balanced -->
                     <div class="relative bg-slate-900/60 rounded-2xl border border-white/10 p-8 flex flex-col md:flex-row items-center justify-center gap-4">
                         <div class="flex flex-col items-center gap-2 w-28">
                             <div class="w-16 h-16 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 text-2xl"><i class="fa-solid fa-hand-pointer"></i></div>
@@ -367,15 +345,28 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER WITH ACTIVE LINKS -->
     <footer class="border-t border-slate-800 bg-black/40 pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="font-display text-2xl text-slate-400 italic mb-10 max-w-2xl mx-auto">"Chúng ta không cần sửa chữa những đứa trẻ, chúng ta cần sửa chữa thế giới mà chúng đang sống."</p>
             <div class="flex flex-wrap justify-center gap-3 text-xs text-slate-500 mb-10 font-mono">
-                <span class="px-3 py-1 bg-slate-900 rounded border border-slate-800">CDC YRBS 2023</span>
-                <span class="px-3 py-1 bg-slate-900 rounded border border-slate-800">UNICEF</span>
-                <span class="px-3 py-1 bg-slate-900 rounded border border-slate-800">WHO</span>
-                <span class="px-3 py-1 bg-slate-900 rounded border border-slate-800">Pew Research</span>
+                <!-- ACTIVE LINKS -->
+                <a href="https://www.cdc.gov/yrbs/results/2023-yrbs-results.html" target="_blank" rel="noopener noreferrer" 
+                   class="px-3 py-1 bg-slate-900 rounded border border-slate-800 hover:bg-slate-800 hover:text-white transition cursor-pointer hover:border-slate-600">
+                   CDC YRBS 2023
+                </a>
+                <a href="https://www.unicef.org/vietnam/press-releases/children-adolescents-parents-and-teachers-viet-nam-require-skills-and-resources" target="_blank" rel="noopener noreferrer" 
+                   class="px-3 py-1 bg-slate-900 rounded border border-slate-800 hover:bg-slate-800 hover:text-white transition cursor-pointer hover:border-slate-600">
+                   UNICEF Việt Nam
+                </a>
+                <a href="https://www.who.int/europe/news/item/25-09-2024-teens--screens-and-mental-health" target="_blank" rel="noopener noreferrer" 
+                   class="px-3 py-1 bg-slate-900 rounded border border-slate-800 hover:bg-slate-800 hover:text-white transition cursor-pointer hover:border-slate-600">
+                   WHO Mental Health
+                </a>
+                <a href="https://www.pewresearch.org/internet/2023/12/11/teens-social-media-and-technology-2023/" target="_blank" rel="noopener noreferrer" 
+                   class="px-3 py-1 bg-slate-900 rounded border border-slate-800 hover:bg-slate-800 hover:text-white transition cursor-pointer hover:border-slate-600">
+                   Pew Research
+                </a>
             </div>
         </div>
     </footer>
@@ -414,12 +405,12 @@
                     </div>`
             },
             tech: {
-                title: "Hiệu Ứng 'Mụ Mẫm Não Bộ' (Brain Rot)",
+                title: "Hiệu Ứng 'Brain Rot'",
                 icon: "fa-mobile-screen",
                 color: "text-cyber-mint-safe",
                 content: `
                     <div class="space-y-4">
-                        <p class="text-slate-300">Trạng thái sương mù não do tiêu thụ nội dung phân mảnh quá mức.</p>
+                        <p class="text-slate-300">Thuật ngữ <strong>"Brain Rot"</strong> mô tả trạng thái sương mù não do tiêu thụ nội dung phân mảnh quá mức.</p>
                         <ul class="space-y-3 mt-4">
                             <li class="flex gap-3 text-sm text-slate-400">
                                 <i class="fa-solid fa-bolt text-cyber-mint-safe mt-1"></i>
@@ -596,4 +587,4 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-    </html>
+</html>
