@@ -19,16 +19,15 @@
             theme: {
                 extend: {
                     colors: {
-                        // Các biến màu sẽ được JS cập nhật
                         'theme-bg': 'var(--theme-bg)',
                         'theme-text': 'var(--theme-text)',
                         'theme-accent': 'var(--theme-accent)',
                         'theme-panel': 'var(--theme-panel)',
-                        
-                        // Màu cố định cho các yếu tố cụ thể
                         'danger-red-safe': '#FCA5A5',
                         'danger-red': '#EF4444',
                         'yellow-safe': '#FDE047',
+                        // Màu tối cố định cho chữ trên nút CTA
+                        'cta-text': '#0B0F19', // Sử dụng màu rất tối để tương phản tốt nhất
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -40,11 +39,12 @@
     </script>
 
     <style>
-        /* Biến CSS mặc định (sẽ bị JS ghi đè) */
         :root {
+            /* Các biến màu mặc định */
             --theme-bg: #121212;
             --theme-text: #F8FAFC;
             --theme-accent: #FDA4AF;
+            --theme-accent-rgb: 253, 164, 175; /* Thêm giá trị RGB cho hiệu ứng shadow */
             --theme-panel: rgba(30, 41, 59, 0.4);
             --bg-gradient: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
                            radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
@@ -74,10 +74,32 @@
         .glass-panel:hover { transform: translateY(-4px) scale(1.01); border-color: var(--theme-accent); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
         .glass-header { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
-        /* Utility classes sử dụng biến màu */
         .text-accent { color: var(--theme-accent); }
         .bg-accent-10 { background-color: color-mix(in srgb, var(--theme-accent), transparent 90%); }
         .border-accent { border-color: var(--theme-accent); }
+
+        /* STYLE MỚI CHO NÚT CTA - Đảm bảo tương phản */
+        .cta-button {
+            background-color: var(--theme-accent);
+            color: var(--theme-cta-text, #0B0F19) !important; /* Bắt buộc màu chữ tối */
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            /* Làm sáng màu nền một chút khi hover để tạo hiệu ứng */
+            background-color: color-mix(in srgb, var(--theme-accent), white 15%);
+            box-shadow: 0 10px 25px -5px rgba(var(--theme-accent-rgb), 0.6);
+        }
+        .cta-button i {
+            color: inherit; /* Icon cũng theo màu chữ */
+        }
 
         .fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); line-height: 1.1; }
         .fluid-p { font-size: clamp(1rem, 2vw, 1.25rem); }
@@ -110,7 +132,6 @@
                     <a href="#solutions" class="hover:text-accent transition hover:opacity-100">Giải Pháp</a>
                 </div>
                 <div class="flex items-center gap-4">
-                    <!-- Nút đổi màu thủ công -->
                     <button onclick="applyRandomTheme()" class="opacity-80 hover:text-accent transition hover:opacity-100" title="Đổi màu ngẫu nhiên">
                         <i class="fa-solid fa-shuffle"></i>
                     </button>
@@ -125,35 +146,51 @@
         </div>
     </nav>
 
-    <header class="pt-32 pb-24 px-6 max-w-7xl mx-auto text-center reveal active relative z-10">
-        <span class="inline-block py-1.5 px-4 rounded-full bg-accent-10 border border-theme-accent text-accent text-xs font-bold tracking-widest mb-8 hover:bg-white/10 transition uppercase">
-            Báo Cáo Xu Hướng 2025
-        </span>
-        <h1 class="fluid-h1 font-display font-bold mb-6 pb-4 drop-shadow-2xl">
-            GEN Z VÀ CƠN BÃO<br> <span class="text-accent">"ĐA KHỦNG HOẢNG"</span>
-        </h1>
-        <p class="fluid-p max-w-3xl mx-auto leading-relaxed font-light mb-10 opacity-90">
-            Không chỉ là buồn chán. Đây là sự hội tụ của <span class="text-accent font-normal">áp lực số</span>, <span class="text-accent font-normal">bất ổn kinh tế</span> và sự đứt gãy của các khế ước xã hội truyền thống.
-        </p>
-        <div class="flex justify-center gap-4">
-            <a href="#context" class="px-8 py-3 bg-white text-void-dark rounded-full font-bold hover:bg-slate-200 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                Khám Phá Ngay
-            </a>
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-24 px-6 max-w-7xl mx-auto reveal active relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Cột trái: Nội dung chính -->
+            <div class="text-left">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-accent-10 border border-theme-accent text-accent text-xs font-bold tracking-widest mb-6 hover:bg-white/10 transition uppercase">
+                    Báo Cáo Xu Hướng 2025
+                </span>
+                <h1 class="fluid-h1 font-display font-bold mb-6 pb-4 drop-shadow-2xl leading-tight">
+                    GEN Z VÀ CƠN BÃO<br> <span class="text-accent">"ĐA KHỦNG HOẢNG"</span>
+                </h1>
+                <p class="fluid-p max-w-xl leading-relaxed font-light mb-10 opacity-90">
+                    Không chỉ là buồn chán. Đây là sự hội tụ của <span class="text-accent font-normal">áp lực số</span>, <span class="text-accent font-normal">bất ổn kinh tế</span> và sự đứt gãy của các khế ước xã hội truyền thống.
+                </p>
+                <!-- Nút CTA đã được tối ưu tương phản -->
+                <a href="#context" class="cta-button">
+                    Khám Phá Ngay <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <!-- Cột phải: Hình ảnh minh họa abstract -->
+            <div class="hidden lg:flex justify-center items-center relative">
+                 <div class="w-full h-96 bg-accent-10 rounded-3xl border border-theme-accent/30 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-theme-accent/20 to-transparent opacity-50"></div>
+                    <i class="fa-solid fa-brain text-accent text-9xl animate-pulse relative z-10 opacity-80 drop-shadow-[0_0_30px_rgba(var(--theme-accent-rgb),0.5)]"></i>
+                    <div class="absolute top-10 right-10 w-32 h-32 bg-theme-accent/20 rounded-full blur-3xl mix-blend-screen"></div>
+                    <div class="absolute bottom-10 left-10 w-48 h-48 bg-theme-accent/10 rounded-full blur-3xl mix-blend-screen"></div>
+                 </div>
+            </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 pb-24 space-y-32 relative z-10">
 
-        <!-- SECTION 1: BENTO GRID (CONTEXT) -->
+        <!-- SECTION 1: BENTO GRID (CONTEXT) - ĐIỀU CHỈNH BỐ CỤC LG -->
         <section id="context" class="reveal">
             <div class="flex items-end justify-between mb-8">
                 <h2 class="text-3xl font-display font-bold">Bối Cảnh Vĩ Mô</h2>
                 <span class="text-xs opacity-60 font-mono hidden sm:block">GRID-AREA: ASYMMETRICAL</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[minmax(180px,auto)]">
-                <!-- Economy -->
-                <div class="glass-panel p-8 lg:col-span-2 flex flex-col justify-between group" onclick="openModal('economy')">
+            <!-- Sử dụng grid-cols-3 cho màn hình lớn thay vì 4 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[minmax(180px,auto)]">
+                <!-- Economy: Chiếm 2/3 chiều rộng -->
+                <div class="glass-panel p-8 md:col-span-2 lg:col-span-2 flex flex-col justify-between group" onclick="openModal('economy')">
                     <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 text-accent"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                     <div class="flex justify-between items-start">
                         <div class="h-12 w-12 rounded-2xl bg-accent-10 flex items-center justify-center text-accent text-2xl"><i class="fa-solid fa-chart-line"></i></div>
@@ -164,8 +201,8 @@
                         <p class="text-sm mt-2 leading-relaxed opacity-80">Gen Z và Millennials chỉ nắm giữ <strong>10.5%</strong> tài sản quốc gia. Khế ước "làm chăm = giàu" đã vỡ.</p>
                     </div>
                 </div>
-                <!-- Tech -->
-                <div class="glass-panel p-8 lg:row-span-2 border-t-4 border-accent flex flex-col group" onclick="openModal('tech')">
+                <!-- Tech: Chiếm 2 hàng ở cột bên phải -->
+                <div class="glass-panel p-8 md:row-span-2 lg:row-span-2 border-t-4 border-accent flex flex-col group" onclick="openModal('tech')">
                     <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition text-accent"><i class="fa-regular fa-eye"></i></div>
                     <div class="h-12 w-12 rounded-2xl bg-accent-10 flex items-center justify-center text-accent text-2xl mb-auto"><i class="fa-solid fa-mobile-screen"></i></div>
                     <h3 class="font-display font-bold text-2xl mt-6 mb-2">Kiệt Sức Số</h3>
@@ -176,7 +213,7 @@
                         <p class="text-[10px] text-accent">Tăng gấp đôi nguy cơ trầm cảm</p>
                     </div>
                 </div>
-                <!-- Asia -->
+                <!-- Asia: Chiếm 1 ô -->
                 <div class="glass-panel p-8 flex flex-col justify-between group" onclick="openModal('asia')">
                     <div class="h-10 w-10 rounded-full bg-accent-10 flex items-center justify-center text-accent text-xl mb-4"><i class="fa-solid fa-earth-asia"></i></div>
                     <div>
@@ -184,8 +221,8 @@
                         <p class="text-xs mt-2 opacity-80">Từ "Nội cuốn" đến "Nằm thẳng".</p>
                     </div>
                 </div>
-                <!-- Quote -->
-                <div class="glass-panel p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center text-center col-span-1 md:col-span-1 lg:col-span-1">
+                <!-- Quote: Chiếm 1 ô -->
+                <div class="glass-panel p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center text-center md:col-span-1 lg:col-span-1">
                     <p class="font-display italic text-sm opacity-70">"Chúng ta không lười biếng,<br>chúng ta kiệt sức."</p>
                 </div>
             </div>
@@ -341,17 +378,18 @@
 
     <script>
         // --- DANH SÁCH CÁC CẶP MÀU AN TOÀN (CURATED THEMES) ---
+        // Đã thêm thuộc tính rgb cho mỗi theme để dùng cho hiệu ứng shadow
         const safeThemes = [
             // Theme 1: Future Dusk (Tím than/Hồng)
-            { bg: '#121212', text: '#F8FAFC', accent: '#FDA4AF', panel: 'rgba(30, 41, 59, 0.4)', gradient: 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)' },
+            { bg: '#121212', text: '#F8FAFC', accent: '#FDA4AF', rgb: '253, 164, 175', panel: 'rgba(30, 41, 59, 0.4)', gradient: 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)' },
             // Theme 2: Deep Ocean (Xanh biển sâu/Bạc hà)
-            { bg: '#0f172a', text: '#f1f5f9', accent: '#5EEAD4', panel: 'rgba(15, 23, 42, 0.6)', gradient: 'radial-gradient(at 10% 10%, #0c4a6e 0, transparent 50%), radial-gradient(at 90% 90%, #115e59 0, transparent 50%)' },
+            { bg: '#0f172a', text: '#f1f5f9', accent: '#5EEAD4', rgb: '94, 234, 212', panel: 'rgba(15, 23, 42, 0.6)', gradient: 'radial-gradient(at 10% 10%, #0c4a6e 0, transparent 50%), radial-gradient(at 90% 90%, #115e59 0, transparent 50%)' },
             // Theme 3: Mocha Night (Nâu trầm/Be ấm)
-            { bg: '#1c1917', text: '#fafaf9', accent: '#d6d3d1', panel: 'rgba(41, 37, 36, 0.6)', gradient: 'radial-gradient(at 50% 0%, #44403c 0, transparent 60%), radial-gradient(at 0% 100%, #292524 0, transparent 50%)' },
+            { bg: '#1c1917', text: '#fafaf9', accent: '#d6d3d1', rgb: '214, 211, 209', panel: 'rgba(41, 37, 36, 0.6)', gradient: 'radial-gradient(at 50% 0%, #44403c 0, transparent 60%), radial-gradient(at 0% 100%, #292524 0, transparent 50%)' },
             // Theme 4: Electric Void (Đen tuyền/Tím điện)
-            { bg: '#000000', text: '#ffffff', accent: '#d8b4fe', panel: 'rgba(38, 38, 38, 0.6)', gradient: 'radial-gradient(at 100% 0%, #581c87 0, transparent 40%), radial-gradient(at 0% 50%, #312e81 0, transparent 40%)' },
+            { bg: '#000000', text: '#ffffff', accent: '#d8b4fe', rgb: '216, 180, 254', panel: 'rgba(38, 38, 38, 0.6)', gradient: 'radial-gradient(at 100% 0%, #581c87 0, transparent 40%), radial-gradient(at 0% 50%, #312e81 0, transparent 40%)' },
             // Theme 5: Forest Whisper (Xanh rừng/Vàng nhạt)
-            { bg: '#022c22', text: '#ecfdf5', accent: '#fde047', panel: 'rgba(2, 44, 34, 0.6)', gradient: 'radial-gradient(at 0% 100%, #14532d 0, transparent 50%), radial-gradient(at 100% 0%, #166534 0, transparent 50%)' }
+            { bg: '#022c22', text: '#ecfdf5', accent: '#fde047', rgb: '253, 224, 71', panel: 'rgba(2, 44, 34, 0.6)', gradient: 'radial-gradient(at 0% 100%, #14532d 0, transparent 50%), radial-gradient(at 100% 0%, #166534 0, transparent 50%)' }
         ];
 
         let currentThemeIndex = 0;
@@ -361,6 +399,7 @@
             root.style.setProperty('--theme-bg', theme.bg);
             root.style.setProperty('--theme-text', theme.text);
             root.style.setProperty('--theme-accent', theme.accent);
+            root.style.setProperty('--theme-accent-rgb', theme.rgb); // Cập nhật biến RGB
             root.style.setProperty('--theme-panel', theme.panel);
             root.style.setProperty('--bg-gradient', theme.gradient);
             
@@ -556,4 +595,4 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-    </html>
+</html>
