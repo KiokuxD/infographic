@@ -26,8 +26,7 @@
                         'danger-red-safe': '#FCA5A5',
                         'danger-red': '#EF4444',
                         'yellow-safe': '#FDE047',
-                        // Màu tối cố định cho chữ trên nút CTA
-                        'cta-text': '#0B0F19', // Sử dụng màu rất tối để tương phản tốt nhất
+                        'cta-text': '#0B0F19',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -40,11 +39,11 @@
 
     <style>
         :root {
-            /* Các biến màu mặc định */
+            /* Mặc định là Theme 1 (Future Dusk) để tránh flash màu khi load */
             --theme-bg: #121212;
             --theme-text: #F8FAFC;
             --theme-accent: #FDA4AF;
-            --theme-accent-rgb: 253, 164, 175; /* Thêm giá trị RGB cho hiệu ứng shadow */
+            --theme-accent-rgb: 253, 164, 175;
             --theme-panel: rgba(30, 41, 59, 0.4);
             --bg-gradient: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
                            radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
@@ -78,10 +77,9 @@
         .bg-accent-10 { background-color: color-mix(in srgb, var(--theme-accent), transparent 90%); }
         .border-accent { border-color: var(--theme-accent); }
 
-        /* STYLE MỚI CHO NÚT CTA - Đảm bảo tương phản */
         .cta-button {
             background-color: var(--theme-accent);
-            color: var(--theme-cta-text, #0B0F19) !important; /* Bắt buộc màu chữ tối */
+            color: var(--theme-cta-text, #0B0F19) !important;
             font-weight: 700;
             padding: 1rem 2rem;
             border-radius: 9999px;
@@ -93,13 +91,10 @@
         }
         .cta-button:hover {
             transform: translateY(-2px);
-            /* Làm sáng màu nền một chút khi hover để tạo hiệu ứng */
             background-color: color-mix(in srgb, var(--theme-accent), white 15%);
             box-shadow: 0 10px 25px -5px rgba(var(--theme-accent-rgb), 0.6);
         }
-        .cta-button i {
-            color: inherit; /* Icon cũng theo màu chữ */
-        }
+        .cta-button i { color: inherit; }
 
         .fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); line-height: 1.1; }
         .fluid-p { font-size: clamp(1rem, 2vw, 1.25rem); }
@@ -166,16 +161,15 @@
 
     <main class="max-w-7xl mx-auto px-6 pb-24 space-y-32 relative z-10">
 
-        <!-- SECTION 1: BENTO GRID (CONTEXT) - ĐIỀU CHỈNH BỐ CỤC LG -->
+        <!-- SECTION 1: BENTO GRID (CONTEXT) -->
         <section id="context" class="reveal">
             <div class="flex items-end justify-between mb-8">
                 <h2 class="text-3xl font-display font-bold">Bối Cảnh Vĩ Mô</h2>
                 <span class="text-xs opacity-60 font-mono hidden sm:block">GRID-AREA: ASYMMETRICAL</span>
             </div>
 
-            <!-- Sử dụng grid-cols-3 cho màn hình lớn thay vì 4 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[minmax(180px,auto)]">
-                <!-- Economy: Chiếm 2/3 chiều rộng -->
+                <!-- Economy -->
                 <div class="glass-panel p-8 md:col-span-2 lg:col-span-2 flex flex-col justify-between group" onclick="openModal('economy')">
                     <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 text-accent"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                     <div class="flex justify-between items-start">
@@ -187,7 +181,7 @@
                         <p class="text-sm mt-2 leading-relaxed opacity-80">Gen Z và Millennials chỉ nắm giữ <strong>10.5%</strong> tài sản quốc gia. Khế ước "làm chăm = giàu" đã vỡ.</p>
                     </div>
                 </div>
-                <!-- Tech: Chiếm 2 hàng ở cột bên phải -->
+                <!-- Tech -->
                 <div class="glass-panel p-8 md:row-span-2 lg:row-span-2 border-t-4 border-accent flex flex-col group" onclick="openModal('tech')">
                     <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition text-accent"><i class="fa-regular fa-eye"></i></div>
                     <div class="h-12 w-12 rounded-2xl bg-accent-10 flex items-center justify-center text-accent text-2xl mb-auto"><i class="fa-solid fa-mobile-screen"></i></div>
@@ -199,7 +193,7 @@
                         <p class="text-[10px] text-accent">Tăng gấp đôi nguy cơ trầm cảm</p>
                     </div>
                 </div>
-                <!-- Asia: Chiếm 1 ô -->
+                <!-- Asia -->
                 <div class="glass-panel p-8 flex flex-col justify-between group" onclick="openModal('asia')">
                     <div class="h-10 w-10 rounded-full bg-accent-10 flex items-center justify-center text-accent text-xl mb-4"><i class="fa-solid fa-earth-asia"></i></div>
                     <div>
@@ -207,7 +201,7 @@
                         <p class="text-xs mt-2 opacity-80">Từ "Nội cuốn" đến "Nằm thẳng".</p>
                     </div>
                 </div>
-                <!-- Quote: Chiếm 1 ô -->
+                <!-- Quote -->
                 <div class="glass-panel p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center text-center md:col-span-1 lg:col-span-1">
                     <p class="font-display italic text-sm opacity-70">"Chúng ta không lười biếng,<br>chúng ta kiệt sức."</p>
                 </div>
@@ -364,7 +358,6 @@
 
     <script>
         // --- DANH SÁCH CÁC CẶP MÀU AN TOÀN (CURATED THEMES) ---
-        // Đã thêm thuộc tính rgb cho mỗi theme để dùng cho hiệu ứng shadow
         const safeThemes = [
             // Theme 1: Future Dusk (Tím than/Hồng)
             { bg: '#121212', text: '#F8FAFC', accent: '#FDA4AF', rgb: '253, 164, 175', panel: 'rgba(30, 41, 59, 0.4)', gradient: 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)' },
@@ -385,7 +378,7 @@
             root.style.setProperty('--theme-bg', theme.bg);
             root.style.setProperty('--theme-text', theme.text);
             root.style.setProperty('--theme-accent', theme.accent);
-            root.style.setProperty('--theme-accent-rgb', theme.rgb); // Cập nhật biến RGB
+            root.style.setProperty('--theme-accent-rgb', theme.rgb);
             root.style.setProperty('--theme-panel', theme.panel);
             root.style.setProperty('--bg-gradient', theme.gradient);
             
@@ -427,8 +420,9 @@
             applyTheme(safeThemes[currentThemeIndex]);
         }
 
-        // Apply a random theme on load
-        applyRandomTheme();
+        // Initialize with default theme (Theme 0) instead of random
+        // applyRandomTheme(); // Old random init
+        applyTheme(safeThemes[0]); // New fixed init
 
         // --- DATA STORE ---
         const modalData = {
