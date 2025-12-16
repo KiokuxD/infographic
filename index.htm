@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.1">
-    <title>Gen Z Report - A0 Infographic (Final Edited)</title>
+    <title>Gen Z Report - A0 Infographic (Final Print Ready)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FONT: SPACE GROTESK & INTER -->
+    <!-- FONT: SPACE GROTESK (Như bản gốc) & INTER -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
@@ -18,7 +18,7 @@
                 extend: {
                     colors: {
                         'bg-dark': '#0B0F19',
-                        'accent-primary': '#38bdf8', /* Sky Blue */
+                        'accent-primary': '#38bdf8', /* Sky Blue cũ */
                         'accent-secondary': '#818cf8', /* Indigo */
                         'accent-alert': '#f87171', /* Red */
                         'text-main': '#f8fafc',
@@ -27,7 +27,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'], /* Font tiêu đề cũ */
                     },
                     spacing: {
                         'a0-w': '2384px', 
@@ -44,7 +44,7 @@
             background-color: #000;
             color: #f8fafc;
             width: 100%; min-height: 100vh;
-            overflow: auto;
+            overflow: auto; /* Cho phép cuộn để xem hết ảnh */
             display: flex; justify-content: center;
         }
 
@@ -60,13 +60,14 @@
             overflow: hidden;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 150px repeat(14, 1fr) 100px;
+            grid-template-rows: 150px repeat(14, 1fr) 100px; /* Header cố định 200px, Footer 100px */
             gap: 2.5rem;
             padding: 5rem;
             box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
+        /* GRID BACKGROUND EFFECT */
         .bg-grid {
             position: absolute; inset: 0; pointer-events: none; z-index: 0;
             background-image: 
@@ -75,6 +76,7 @@
             background-size: 80px 80px;
         }
 
+        /* CARD STYLE */
         .infographic-card {
             background: var(--card-bg);
             border: 3px solid var(--card-border);
@@ -86,7 +88,7 @@
             display: flex; flex-direction: column;
         }
 
-        /* TYPOGRAPHY */
+        /* TYPOGRAPHY - SCALED FOR A0 */
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         
         .text-hero { font-size: 8rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
@@ -94,16 +96,21 @@
         .text-h2 { font-size: 3rem; font-weight: 600; margin-bottom: 1.5rem; }
         .text-h3 { font-size: 2.2rem; font-weight: 600; margin-bottom: 1rem; color: #e2e8f0; }
         .text-body { font-size: 1.6rem; line-height: 1.6; color: #94a3b8; }
+        .text-highlight { color: #38bdf8; }
         
-        /* DECORATIONS - Tăng kích thước thẻ */
+        /* DECORATIONS - UPDATED SIZE */
         .badge {
-            display: inline-block; padding: 0.8rem 2rem; /* Tăng padding */
-            background: rgba(56, 189, 248, 0.1); border: 3px solid rgba(56, 189, 248, 0.3); /* Viền dày hơn */
-            color: #38bdf8; font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem; /* Tăng cỡ chữ lên 1.8rem */
-            font-weight: 800; /* Đậm hơn */
+            display: inline-block; 
+            padding: 0.8rem 2.5rem; /* Tăng padding */
+            background: rgba(56, 189, 248, 0.1); 
+            border: 3px solid rgba(56, 189, 248, 0.3); /* Viền dày hơn chút */
+            color: #38bdf8; 
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem; /* TĂNG KÍCH THƯỚC CHỮ LÊN (Gốc là 1.2rem) */
+            font-weight: 700; 
             text-transform: uppercase;
-            border-radius: 99px; margin-bottom: 2.5rem;
+            border-radius: 99px; 
+            margin-bottom: 2rem;
         }
 
         .divider { width: 100%; height: 3px; background: rgba(255,255,255,0.1); margin: 2rem 0; }
@@ -114,12 +121,10 @@
         .border-mech { border-color: #f472b6; }
         .border-sol { border-color: #34d399; }
         
-        /* LEGEND */
-        .legend-box {
-            display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;
-        }
-        .legend-item { display: flex; align-items: center; gap: 0.8rem; font-size: 1.6rem; color: #cbd5e1; }
-        .dot { width: 1.8rem; height: 1.8rem; border-radius: 50%; display: inline-block; }
+        /* CHART LEGEND (Add back for clarity if needed, or keep minimal) */
+        .legend-box { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.6rem; color: #cbd5e1; }
+        .dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-block; }
 
     </style>
 </head>
@@ -128,7 +133,7 @@
     <div class="a0-container">
         <div class="bg-grid"></div>
 
-        <!-- 1. HEADER -->
+        <!-- 1. HEADER (Top Full Width) -->
         <div class="col-span-12 row-span-2 flex items-center justify-between border-b-4 border-white/10 pb-8 z-10">
             <div>
                 <div class="flex items-center gap-4 mb-4">
@@ -148,7 +153,7 @@
             </div>
         </div>
 
-        <!-- 2. HERO STAT -->
+        <!-- 2. HERO STAT (Left Column) -->
         <div class="col-span-4 row-span-5 infographic-card border-accent-alert/50 bg-gradient-to-br from-accent-alert/5 to-transparent flex items-center justify-center text-center">
             <i class="fa-solid fa-triangle-exclamation text-[12rem] text-accent-alert mb-12 opacity-80"></i>
             <div class="text-[14rem] leading-none font-display font-bold text-accent-alert tracking-tighter">91.6<span class="text-[8rem]">%</span></div>
@@ -157,14 +162,14 @@
             <p class="text-body px-8">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong>không tiếp cận được</strong> dịch vụ y tế.</p>
         </div>
 
-        <!-- 3. BỐI CẢNH (Đã chỉnh sửa theo yêu cầu) -->
+        <!-- 3. BỐI CẢNH (Middle) -->
         <div class="col-span-4 row-span-5 infographic-card border-economy">
             <span class="badge">01. Bối Cảnh Vĩ Mô</span>
             <h2 class="text-h1 font-display text-accent-primary mb-12">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
             
-            <div class="space-y-12 flex-1 flex flex-col justify-center"> <!-- Căn giữa theo chiều dọc -->
-                <!-- Stat Block -->
-                <div class="bg-black/40 p-10 rounded-3xl border border-white/10 flex gap-8 mb-8"> <!-- Thêm margin bottom -->
+            <div class="space-y-12 flex-1">
+                <!-- Stat Block 1 -->
+                <div class="bg-black/40 p-10 rounded-3xl border border-white/10 flex gap-8">
                     <i class="fa-solid fa-chart-line text-7xl text-gray-500"></i>
                     <div>
                         <h3 class="text-h2 text-white mb-2">< 2%</h3>
@@ -172,7 +177,7 @@
                     </div>
                 </div>
 
-                <!-- Stat Block -->
+                <!-- Stat Block 2 -->
                 <div class="bg-black/40 p-10 rounded-3xl border border-white/10 flex gap-8">
                     <i class="fa-solid fa-people-roof text-7xl text-gray-500"></i>
                     <div>
@@ -180,12 +185,13 @@
                         <p class="text-body">56% thanh niên Hàn Quốc sống phụ thuộc cha mẹ, từ chối trưởng thành.</p>
                     </div>
                 </div>
-                
-                <!-- ĐÃ LOẠI BỎ PHẦN PHẢN KHÁNG THỤ ĐỘNG -->
+
+                <!-- ĐÃ XÓA PHẦN PHẢN KHÁNG THỤ ĐỘNG THEO YÊU CẦU -->
+                <!-- Khoảng trống ở đây sẽ được giữ nguyên để đảm bảo cấu trúc không bị méo -->
             </div>
         </div>
 
-        <!-- 4. DỮ LIỆU -->
+        <!-- 4. DỮ LIỆU (Right Column) -->
         <div class="col-span-4 row-span-8 infographic-card border-data">
             <span class="badge" style="color: #818cf8; border-color: #818cf8;">02. Dữ Liệu Chuyên Sâu</span>
             
@@ -195,12 +201,13 @@
                 <div class="flex-1 w-full bg-black/20 rounded-3xl p-6 border border-white/5">
                     <canvas id="genderChart"></canvas>
                 </div>
+                <!-- Thêm Legend cho rõ ràng -->
                 <div class="legend-box">
                     <div class="legend-item"><span class="dot bg-white/20"></span>Nam (28%)</div>
                     <div class="legend-item"><span class="dot bg-indigo-400"></span>Nữ (53%)</div>
                     <div class="legend-item text-purple-300 font-bold"><span class="dot bg-purple-400"></span>LGBTQ+ (65.7%)</div>
                 </div>
-                <p class="text-body mt-4 text-indigo-300"><i class="fa-solid fa-circle-info mr-2"></i><strong>Insight:</strong> Nhóm LGBTQ+ chịu áp lực gấp đôi do "Căng thẳng thiểu số".</p>
+                <p class="text-body mt-4 text-indigo-300"><i class="fa-solid fa-circle-info mr-2"></i><strong>LGBTQ+</strong> chịu áp lực gấp đôi nhóm dị tính.</p>
             </div>
 
             <div class="divider"></div>
@@ -215,15 +222,14 @@
                         <span class="text-2xl font-mono uppercase">Điểm Bùng Phát</span>
                     </div>
                 </div>
-                <div class="legend-box">
-                    <div class="legend-item"><span class="dot bg-emerald-400"></span>An toàn (<2h)</div>
-                    <div class="legend-item"><span class="dot bg-yellow-400"></span>Rủi ro (2-3h)</div>
-                    <div class="legend-item"><span class="dot bg-red-400"></span>Nguy hiểm (5h+)</div>
+                <div class="flex justify-between mt-4 px-4 text-center">
+                    <div><span class="block text-4xl font-bold text-green-400">< 2h</span><span class="text-xl opacity-60">An toàn</span></div>
+                    <div><span class="block text-4xl font-bold text-red-400">5h+</span><span class="text-xl opacity-60">Nguy hiểm</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- 5. CƠ CHẾ -->
+        <!-- 5. CƠ CHẾ (Bottom Left - Wide) -->
         <div class="col-span-8 row-span-4 infographic-card border-mech">
             <span class="badge" style="color: #f472b6; border-color: #f472b6;">03. Cơ Chế Thần Kinh</span>
             <div class="flex items-center gap-12 h-full">
@@ -234,9 +240,11 @@
                     </p>
                 </div>
                 <div class="w-2/3 bg-black/40 rounded-[3rem] p-12 flex justify-between items-center relative border border-white/10">
+                    <!-- Steps -->
                     <div class="text-center z-10">
                         <i class="fa-solid fa-hand-pointer text-6xl text-gray-400 mb-4"></i>
                         <div class="text-2xl font-bold">Kích Thích</div>
+                        <div class="text-lg opacity-60 mt-2">Video 15s</div>
                     </div>
                     <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
                     
@@ -245,27 +253,29 @@
                             <i class="fa-solid fa-gift text-7xl text-pink-500"></i>
                         </div>
                         <div class="text-3xl font-bold text-pink-400">Phần Thưởng</div>
-                        <div class="text-xl text-gray-400">Biến đổi</div>
+                        <div class="text-xl text-gray-400 mt-2">Biến đổi</div>
                     </div>
                     
                     <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
                     <div class="text-center z-10">
                         <i class="fa-solid fa-rotate text-6xl text-gray-400 mb-4"></i>
                         <div class="text-2xl font-bold">Lặp Lại</div>
+                        <div class="text-lg opacity-60 mt-2">Vô thức</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 6. GIẢI PHÁP -->
+        <!-- 6. GIẢI PHÁP (Bottom Right - Same height as Mech) -->
         <div class="col-span-12 row-span-4 grid grid-cols-2 gap-10 mt-[-2.5rem] pt-[2.5rem]"> 
             
             <div class="infographic-card border-sol">
                 <span class="badge" style="color: #34d399; border-color: #34d399;">04. Giải Pháp: Vùng An Toàn Số</span>
                 <div class="flex flex-col items-center justify-center text-center h-full">
                     <i class="fa-solid fa-shield-halved text-[8rem] text-emerald-400 mb-8"></i>
+                    <h3 class="text-3xl font-bold text-white mb-4">Private Messaging</h3>
                     <p class="text-body text-2xl px-12">
-                        Chuyển từ MXH công khai sang <strong>Private Messaging</strong> (Zalo/Discord) để tìm kiếm sự hỗ trợ đồng đẳng và giảm áp lực so sánh.
+                        Chuyển từ MXH công khai sang <strong>nhóm chat kín</strong> (Zalo/Discord) để tìm kiếm sự hỗ trợ đồng đẳng và giảm áp lực so sánh (Toxic Comparison).
                     </p>
                 </div>
             </div>
@@ -274,8 +284,9 @@
                 <span class="badge" style="color: #fff; border-color: #fff;">05. Kỹ Thuật Grounding</span>
                 <div class="flex flex-col items-center justify-center text-center h-full">
                     <i class="fa-solid fa-tree text-[8rem] text-white mb-8"></i>
+                    <h3 class="text-3xl font-bold text-white mb-4">Quy Tắc 5-4-3-2-1</h3>
                     <p class="text-body text-2xl px-12">
-                        Quy tắc <strong>5-4-3-2-1</strong>: Tìm 5 vật nhìn thấy, 4 vật chạm được... để tái kết nối với thực tại vật lý và ngắt mạch lo âu.
+                        Tìm <strong>5</strong> vật nhìn thấy, <strong>4</strong> vật chạm được, <strong>3</strong> âm thanh... để tái kết nối với thực tại vật lý và ngắt mạch lo âu ngay lập tức.
                     </p>
                 </div>
             </div>
@@ -291,8 +302,9 @@
 
     <script>
         // CẤU HÌNH BIỂU ĐỒ CHO KHỔ A0
+        // Tăng kích thước font cực đại để dễ đọc khi in
         Chart.defaults.font.size = 36;
-        Chart.defaults.font.family = 'Space Grotesk';
+        Chart.defaults.font.family = 'Space Grotesk'; // Dùng font không chân kiểu cũ
         Chart.defaults.color = '#cbd5e1';
         
         // 1. Gender Chart
