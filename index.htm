@@ -2,8 +2,9 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.1">
-    <title>Gen Z Report - A0 Infographic (Print Safe Layout)</title>
+    <!-- ĐÃ SỬA: SCALE=1.0 ĐỂ ĐẢM BẢO ĐỘ PHÂN GIẢI GỐC CAO NHẤT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen Z Report - A0 Infographic (High Res Print)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -44,9 +45,8 @@
             background-color: #000;
             color: #f8fafc;
             width: 100%; min-height: 100vh;
-            overflow: auto; /* Cho phép cuộn để xem hết ảnh */
-            /* ĐÃ XÓA FLEXBOX CĂN GIỮA ĐỂ TRÁNH LỖI CHỤP ẢNH */
-            display: block; 
+            overflow: auto; 
+            display: block; /* Giữ layout block để tránh lỗi chụp ảnh */
         }
 
         /* KHUNG A0 CHUẨN */
@@ -67,7 +67,7 @@
             box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
             
-            /* CĂN GIỮA BẰNG MARGIN AUTO (An toàn cho chụp ảnh) */
+            /* CĂN GIỮA BẰNG MARGIN AUTO */
             margin: 0 auto;
         }
 
@@ -102,7 +102,7 @@
         .text-body { font-size: 1.6rem; line-height: 1.6; color: #94a3b8; }
         .text-highlight { color: #38bdf8; }
         
-        /* DECORATIONS - UPDATED SIZE */
+        /* DECORATIONS - TĂNG KÍCH THƯỚC THẺ 01-05 */
         .badge {
             display: inline-block; 
             padding: 0.8rem 2.5rem; /* Tăng padding */
@@ -110,7 +110,7 @@
             border: 3px solid rgba(56, 189, 248, 0.3); /* Viền dày hơn chút */
             color: #38bdf8; 
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem; /* TĂNG KÍCH THƯỚC CHỮ LÊN (Gốc là 1.2rem) */
+            font-size: 1.8rem; /* TĂNG KÍCH THƯỚC CHỮ LÊN */
             font-weight: 700; 
             text-transform: uppercase;
             border-radius: 99px; 
@@ -166,7 +166,7 @@
             <p class="text-body px-8">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong>không tiếp cận được</strong> dịch vụ y tế.</p>
         </div>
 
-        <!-- 3. BỐI CẢNH (Middle) -->
+        <!-- 3. BỐI CẢNH (Middle - ĐÃ XÓA PHẢN KHÁNG THỤ ĐỘNG) -->
         <div class="col-span-4 row-span-5 infographic-card border-economy">
             <span class="badge">01. Bối Cảnh Vĩ Mô</span>
             <h2 class="text-h1 font-display text-accent-primary mb-12">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
@@ -190,8 +190,7 @@
                     </div>
                 </div>
 
-                <!-- ĐÃ XÓA PHẦN PHẢN KHÁNG THỤ ĐỘNG THEO YÊU CẦU -->
-                <!-- Khoảng trống ở đây sẽ được giữ nguyên để đảm bảo cấu trúc không bị méo -->
+                <!-- KHOẢNG TRỐNG TỰ NHIÊN ĐƯỢC GIỮ LẠI -->
             </div>
         </div>
 
@@ -205,7 +204,7 @@
                 <div class="flex-1 w-full bg-black/20 rounded-3xl p-6 border border-white/5">
                     <canvas id="genderChart"></canvas>
                 </div>
-                <!-- Thêm Legend cho rõ ràng -->
+                <!-- Legend -->
                 <div class="legend-box">
                     <div class="legend-item"><span class="dot bg-white/20"></span>Nam (28%)</div>
                     <div class="legend-item"><span class="dot bg-indigo-400"></span>Nữ (53%)</div>
@@ -253,7 +252,7 @@
                     <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
                     
                     <div class="text-center z-10 transform scale-125">
-                        <!-- THÊM mx-auto VÀO ĐÂY ĐỂ CĂN GIỮA -->
+                        <!-- THÊM mx-auto ĐỂ CĂN GIỮA ICON -->
                         <div class="w-40 h-40 mx-auto rounded-full bg-pink-500/20 border-4 border-pink-500 flex items-center justify-center mb-6 shadow-[0_0_60px_rgba(236,72,153,0.4)]">
                             <i class="fa-solid fa-gift text-7xl text-pink-500"></i>
                         </div>
@@ -309,7 +308,7 @@
         // CẤU HÌNH BIỂU ĐỒ CHO KHỔ A0
         // Tăng kích thước font cực đại để dễ đọc khi in
         Chart.defaults.font.size = 36;
-        Chart.defaults.font.family = 'Space Grotesk'; // Dùng font không chân kiểu cũ
+        Chart.defaults.font.family = 'Space Grotesk';
         Chart.defaults.color = '#cbd5e1';
         
         // 1. Gender Chart
