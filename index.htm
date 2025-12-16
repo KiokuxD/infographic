@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.1">
-    <title>Gen Z Report - A0 Infographic (Fixed Layout)</title>
+    <title>Gen Z Report - A0 Infographic (Final Polish)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -22,8 +22,8 @@
                         'accent-secondary': '#818cf8', /* Indigo */
                         'accent-alert': '#f87171', /* Red */
                         'text-main': '#f8fafc',
-                        'card-bg': 'rgba(30, 41, 59, 0.6)', /* Tăng độ đậm nền card để chữ rõ hơn */
-                        'card-border': 'rgba(255, 255, 255, 0.15)',
+                        'card-bg': 'rgba(30, 41, 59, 0.7)', /* Đậm hơn chút để tăng tương phản */
+                        'card-border': 'rgba(255, 255, 255, 0.2)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -60,9 +60,8 @@
             overflow: hidden;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            /* GIỮ NGUYÊN CẤU TRÚC GRID NHƯNG TINH CHỈNH TỶ LỆ */
-            grid-template-rows: 200px repeat(14, 1fr) 100px; 
-            gap: 2.5rem;
+            grid-template-rows: 220px repeat(14, 1fr) 100px; /* Tăng chiều cao Header chút */
+            gap: 3rem; /* Tăng khoảng cách */
             padding: 5rem;
             box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
@@ -76,44 +75,48 @@
             background-size: 80px 80px;
         }
 
-        /* CARD STYLE - Tăng độ dày viền */
+        /* CARD STYLE */
         .infographic-card {
             background: var(--card-bg);
-            border: 4px solid var(--card-border);
-            border-radius: 2.5rem;
-            padding: 3rem; /* Padding vừa đủ để nội dung không bị ép */
+            border: 5px solid var(--card-border); /* Viền dày hơn */
+            border-radius: 3rem; /* Bo tròn hơn */
+            padding: 4rem; 
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             display: flex; flex-direction: column;
-            justify-content: space-between; /* Dàn đều nội dung */
+            justify-content: space-between;
         }
 
-        /* TYPOGRAPHY */
+        /* TYPOGRAPHY - TĂNG CỠ CHỮ THEO YÊU CẦU */
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         
-        .text-hero { font-size: 8rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
-        .text-h1 { font-size: 4.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-        .text-h2 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
-        .text-h3 { font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem; color: #e2e8f0; }
-        .text-body { font-size: 1.6rem; line-height: 1.5; color: #cbd5e1; }
+        .text-hero { font-size: 9rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
+        
+        /* Đề mục lớn hơn tí */
+        .text-h1 { font-size: 5.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+        .text-h2 { font-size: 3.8rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+        .text-h3 { font-size: 2.8rem; font-weight: 600; margin-bottom: 0.8rem; color: #e2e8f0; }
+        
+        .text-body { font-size: 1.8rem; line-height: 1.6; color: #cbd5e1; }
+        .text-detail { font-size: 1.6rem; line-height: 1.5; color: #94a3b8; }
         
         .badge {
-            display: inline-block; padding: 0.5rem 1.5rem;
-            background: rgba(56, 189, 248, 0.1); border: 2px solid rgba(56, 189, 248, 0.3);
+            display: inline-block; padding: 0.8rem 2rem;
+            background: rgba(56, 189, 248, 0.1); border: 3px solid rgba(56, 189, 248, 0.3);
             color: #38bdf8; font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
-            border-radius: 99px; margin-bottom: 2rem; width: fit-content;
+            font-size: 1.6rem; font-weight: 700; text-transform: uppercase;
+            border-radius: 99px; margin-bottom: 2.5rem; width: fit-content;
         }
 
-        .divider { width: 100%; height: 3px; background: rgba(255,255,255,0.1); margin: 2rem 0; }
+        .divider { width: 100%; height: 4px; background: rgba(255,255,255,0.15); margin: 3rem 0; }
 
         /* LEGEND CUSTOM */
         .legend-box {
-            display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap;
+            display: flex; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;
         }
-        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.4rem; color: #cbd5e1; }
-        .dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; }
+        .legend-item { display: flex; align-items: center; gap: 1rem; font-size: 1.8rem; color: #fff; font-weight: 500; }
+        .dot { width: 2rem; height: 2rem; border-radius: 50%; display: inline-block; }
 
         /* SPECIFIC BORDERS */
         .border-economy { border-color: #38bdf8; }
@@ -128,87 +131,89 @@
         <div class="bg-grid"></div>
 
         <!-- 1. HEADER -->
-        <div class="col-span-12 row-span-1 flex items-center justify-between border-b-4 border-white/10 pb-4 z-10">
+        <div class="col-span-12 row-span-1 flex items-center justify-between border-b-4 border-white/10 pb-6 z-10">
             <div>
-                <div class="flex items-center gap-4 mb-2">
-                    <div class="w-16 h-16 rounded-full bg-accent-primary flex items-center justify-center text-black text-3xl">
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="w-20 h-20 rounded-full bg-accent-primary flex items-center justify-center text-black text-4xl">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <span class="text-3xl font-display font-bold tracking-widest text-accent-primary uppercase">Gen Z Report 2025</span>
+                    <span class="text-4xl font-display font-bold tracking-widest text-accent-primary uppercase">Gen Z Report 2025</span>
                 </div>
                 <h1 class="text-hero font-display text-white">
                     GIẢI MÃ <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">ĐA KHỦNG HOẢNG</span>
                 </h1>
             </div>
-            <div class="text-right max-w-4xl pt-4">
-                <p class="text-body text-2xl border-l-8 border-accent-primary pl-8 italic">
+            <div class="text-right max-w-5xl pt-4">
+                <p class="text-body text-3xl border-l-8 border-accent-primary pl-10 italic leading-relaxed text-gray-300">
                     "Không chỉ là nỗi buồn vu vơ. Đây là sự hội tụ của áp lực số, bất ổn kinh tế và sự đứt gãy kết nối xã hội."
                 </p>
             </div>
         </div>
 
-        <!-- 2. HERO STAT (Trái - Giữ nguyên vị trí) -->
+        <!-- 2. HERO STAT (Trái) -->
         <div class="col-span-4 row-span-5 infographic-card border-accent-alert/50 bg-gradient-to-br from-accent-alert/10 to-transparent flex items-center justify-center text-center">
-            <i class="fa-solid fa-triangle-exclamation text-[10rem] text-accent-alert mb-8 opacity-80"></i>
-            <div class="text-[12rem] leading-none font-display font-bold text-accent-alert tracking-tighter">91.6<span class="text-[6rem]">%</span></div>
-            <h2 class="text-h2 font-display text-white mt-6">Khoảng Trống Điều Trị</h2>
+            <i class="fa-solid fa-triangle-exclamation text-[14rem] text-accent-alert mb-10 opacity-90 animate-pulse"></i>
+            <div class="text-[15rem] leading-none font-display font-bold text-accent-alert tracking-tighter">91.6<span class="text-[8rem]">%</span></div>
+            <h2 class="text-h2 font-display text-white mt-8">Khoảng Trống Điều Trị</h2>
             <div class="divider bg-accent-alert/30"></div>
-            <p class="text-body text-xl px-4">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong>không tiếp cận được</strong> dịch vụ y tế. (Nguồn: UNICEF)</p>
+            <p class="text-body text-2xl px-6 leading-relaxed">
+                Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong>không tiếp cận được</strong> bất kỳ dịch vụ y tế nào. <br>
+                <span class="text-gray-400 text-lg mt-4 block">(Nguồn: UNICEF Việt Nam 2024)</span>
+            </p>
         </div>
 
-        <!-- 3. BỐI CẢNH (Giữa - Sửa lỗi Kangaroo & LGBTQ bị che) -->
+        <!-- 3. BỐI CẢNH (Giữa - Đã bỏ phần phản kháng, mở rộng 2 phần kia) -->
         <div class="col-span-4 row-span-5 infographic-card border-economy">
             <span class="badge">01. Bối Cảnh Vĩ Mô</span>
-            <h2 class="text-h1 font-display text-accent-primary mb-8">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
+            <h2 class="text-h1 font-display text-accent-primary mb-10">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
             
-            <div class="space-y-8 flex-1 overflow-visible"> <!-- Thêm overflow-visible -->
+            <div class="flex flex-col gap-10 flex-1 justify-center"> <!-- Dàn đều theo chiều dọc -->
                 <!-- Stat Block 1 -->
-                <div class="bg-black/40 p-6 rounded-3xl border border-white/10 flex gap-6 items-start">
-                    <i class="fa-solid fa-chart-line text-6xl text-gray-500 mt-2"></i>
+                <div class="bg-black/40 p-10 rounded-[3rem] border-2 border-white/10 flex gap-8 items-center hover:border-accent-primary/50 transition duration-300">
+                    <i class="fa-solid fa-chart-line text-8xl text-gray-500"></i>
                     <div>
-                        <h3 class="text-h2 text-white mb-1">< 2%</h3>
-                        <p class="text-body text-lg">Tổng tài sản quốc gia Gen Z nắm giữ. Dẫn đến hành vi <strong>"Doom Spending"</strong> (Chi tiêu giải tỏa).</p>
+                        <h3 class="text-h2 text-white mb-2">< 2%</h3>
+                        <p class="text-body text-xl leading-relaxed">
+                            Tổng tài sản quốc gia Gen Z nắm giữ. Dẫn đến hành vi <strong>"Doom Spending"</strong> (Chi tiêu giải tỏa vì tuyệt vọng mua nhà).
+                        </p>
                     </div>
                 </div>
 
                 <!-- Stat Block 2 -->
-                <div class="bg-black/40 p-6 rounded-3xl border border-white/10 flex gap-6 items-start">
-                    <i class="fa-solid fa-people-roof text-6xl text-gray-500 mt-2"></i>
+                <div class="bg-black/40 p-10 rounded-[3rem] border-2 border-white/10 flex gap-8 items-center hover:border-accent-primary/50 transition duration-300">
+                    <i class="fa-solid fa-people-roof text-8xl text-gray-500"></i>
                     <div>
-                        <h3 class="text-h2 text-white mb-1">Bộ Lạc Kangaroo</h3>
-                        <p class="text-body text-lg">56% thanh niên Hàn Quốc sống phụ thuộc cha mẹ do giá nhà đất, từ chối trưởng thành.</p>
-                    </div>
-                </div>
-
-                <div class="mt-auto bg-white/5 p-6 rounded-3xl border border-white/10">
-                    <strong class="block text-2xl font-display mb-4 text-accent-primary">PHẢN KHÁNG THỤ ĐỘNG:</strong>
-                    <div class="flex flex-wrap gap-3 text-xl font-mono text-gray-300">
-                        <span class="border px-4 py-2 rounded-lg bg-black/50">BAI LAN (TQ)</span>
-                        <span class="border px-4 py-2 rounded-lg bg-black/50">QUIET QUITTING</span>
+                        <h3 class="text-h2 text-white mb-2">Bộ Lạc Kangaroo</h3>
+                        <p class="text-body text-xl leading-relaxed">
+                            <strong>56%</strong> thanh niên Hàn Quốc (25-29 tuổi) vẫn sống phụ thuộc cha mẹ do giá nhà đất và áp lực kinh tế.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 4. DỮ LIỆU (Phải - Thêm Legend & Sửa lỗi hiển thị) -->
+        <!-- 4. DỮ LIỆU (Phải - Chỉnh lại LGBTQ+) -->
         <div class="col-span-4 row-span-8 infographic-card border-data">
             <span class="badge" style="color: #818cf8; border-color: #818cf8;">02. Dữ Liệu Chuyên Sâu</span>
             
             <!-- Chart 1: Gender -->
-            <div class="flex-1 flex flex-col mb-8">
-                <h3 class="text-h2 font-display mb-4">Tỷ Lệ Mắc (Prevalence)</h3>
-                <!-- Chart Container -->
-                <div class="relative w-full bg-black/20 rounded-3xl p-6 border border-white/5 flex-1">
+            <div class="flex-1 flex flex-col mb-10">
+                <h3 class="text-h2 font-display mb-6">Tỷ Lệ Mắc (Prevalence)</h3>
+                <div class="relative w-full bg-black/20 rounded-[3rem] p-8 border-2 border-white/5 flex-1 flex flex-col justify-center">
                     <canvas id="genderChart"></canvas>
                 </div>
-                <!-- LEGEND THỦ CÔNG -->
-                <div class="legend-box justify-center">
+                <!-- LEGEND -->
+                <div class="legend-box">
                     <div class="legend-item"><span class="dot bg-white/20"></span>Nam (28%)</div>
                     <div class="legend-item"><span class="dot bg-indigo-400"></span>Nữ (53%)</div>
-                    <div class="legend-item"><span class="dot bg-purple-400"></span>LGBTQ+ (65.7%)</div>
+                    <!-- Đã chỉnh lại chữ LGBTQ+ cho rõ ràng -->
+                    <div class="legend-item text-purple-300 font-bold"><span class="dot bg-purple-400"></span>LGBTQ+ (65.7%)</div>
                 </div>
-                <div class="mt-4 p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                    <p class="text-body text-lg text-indigo-200"><i class="fa-solid fa-circle-info mr-2"></i><strong>Insight:</strong> Nhóm LGBTQ+ chịu áp lực gấp đôi do "Căng thẳng thiểu số".</p>
+                <div class="mt-6 p-6 bg-indigo-500/10 rounded-2xl border border-indigo-500/20">
+                    <p class="text-body text-xl text-indigo-100 leading-relaxed">
+                        <i class="fa-solid fa-circle-info mr-3 text-2xl"></i>
+                        <strong>Insight:</strong> Nhóm LGBTQ+ chịu áp lực gấp đôi do "Căng thẳng thiểu số" (Minority Stress) và sự kỳ thị xã hội.
+                    </p>
                 </div>
             </div>
 
@@ -216,16 +221,16 @@
 
             <!-- Chart 2: Screen Time -->
             <div class="flex-1 flex flex-col">
-                <h3 class="text-h2 font-display mb-4">Ngưỡng Rủi Ro Số</h3>
-                <div class="relative w-full flex items-center justify-center flex-1 bg-black/20 rounded-3xl p-4 border border-white/5">
+                <h3 class="text-h2 font-display mb-6">Ngưỡng Rủi Ro Số</h3>
+                <div class="relative w-full flex items-center justify-center flex-1 bg-black/20 rounded-[3rem] p-6 border-2 border-white/5">
                     <canvas id="screenChart"></canvas>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-8">
-                        <span class="text-[5rem] font-bold font-display leading-none text-white">3h</span>
-                        <span class="text-xl font-mono uppercase text-gray-400">Điểm Bùng Phát</span>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-12">
+                        <span class="text-[8rem] font-bold font-display leading-none text-white">3h</span>
+                        <span class="text-3xl font-mono uppercase text-gray-400 tracking-widest">ĐIỂM BÙNG PHÁT</span>
                     </div>
                 </div>
-                <!-- LEGEND THỦ CÔNG -->
-                <div class="legend-box justify-center">
+                <!-- LEGEND -->
+                <div class="legend-box">
                     <div class="legend-item"><span class="dot bg-emerald-400"></span>An toàn (<2h)</div>
                     <div class="legend-item"><span class="dot bg-yellow-400"></span>Rủi ro (2-3h)</div>
                     <div class="legend-item"><span class="dot bg-red-400"></span>Nguy hiểm (5h+)</div>
@@ -233,57 +238,68 @@
             </div>
         </div>
 
-        <!-- 5. CƠ CHẾ (Góc dưới Trái - Wide) -->
+        <!-- 5. CƠ CHẾ (Góc dưới Trái - Chi tiết hơn) -->
         <div class="col-span-8 row-span-4 infographic-card border-mech">
             <span class="badge" style="color: #f472b6; border-color: #f472b6;">03. Cơ Chế Thần Kinh</span>
-            <div class="flex items-center gap-12 h-full px-4">
+            <div class="flex items-center gap-16 h-full px-6">
                 <div class="w-1/3">
-                    <h2 class="text-h1 font-display text-pink-400 mb-6">Vòng Lặp<br>Dopamine</h2>
-                    <p class="text-body text-xl">
-                        Video ngắn hoạt động như máy đánh bạc (Slot Machine). Sự <strong>bất định (Uncertainty)</strong> của nội dung tiếp theo khiến não bộ bị "kẹt" trong trạng thái hưng phấn ngắn hạn.
+                    <h2 class="text-h1 font-display text-pink-400 mb-8">Vòng Lặp<br>Dopamine</h2>
+                    <p class="text-body text-2xl leading-relaxed mb-6">
+                        Video ngắn hoạt động như máy đánh bạc (Slot Machine). Sự <strong>bất định (Uncertainty)</strong> kích thích não bộ mạnh hơn phần thưởng cố định.
                     </p>
-                </div>
-                <div class="w-2/3 bg-black/40 rounded-[3rem] p-10 flex justify-between items-center relative border border-white/10">
-                    <!-- Flow Steps -->
-                    <div class="text-center z-10">
-                        <i class="fa-solid fa-hand-pointer text-6xl text-gray-400 mb-4"></i>
-                        <div class="text-2xl font-bold">1. Kích Thích</div>
-                        <div class="text-body text-sm mt-1">Video 15s</div>
+                    <div class="bg-pink-500/10 p-6 rounded-2xl border border-pink-500/20">
+                        <strong class="text-pink-300 text-xl block mb-2"><i class="fa-solid fa-brain mr-2"></i>Hệ quả: Brain Rot</strong>
+                        <p class="text-body text-lg">Suy giảm khả năng tập trung sâu, luôn khao khát kích thích tức thì.</p>
                     </div>
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
+                </div>
+                
+                <div class="w-2/3 bg-black/40 rounded-[3rem] p-12 flex justify-between items-center relative border-2 border-white/10 shadow-2xl">
+                    <!-- Flow Steps -->
+                    <div class="text-center z-10 w-1/3">
+                        <div class="w-24 h-24 mx-auto rounded-full bg-white/5 flex items-center justify-center mb-4 border border-white/10">
+                            <i class="fa-solid fa-hand-pointer text-5xl text-gray-300"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-white">1. Kích Thích</div>
+                        <div class="text-body text-lg mt-2 text-gray-400">Video 15s</div>
+                    </div>
                     
-                    <div class="text-center z-10 transform scale-110">
-                        <div class="w-32 h-32 rounded-full bg-pink-500/20 border-4 border-pink-500 flex items-center justify-center mb-4 shadow-[0_0_50px_rgba(236,72,153,0.4)]">
+                    <i class="fa-solid fa-arrow-right text-5xl text-pink-500/50 animate-pulse"></i>
+                    
+                    <div class="text-center z-10 w-1/3 transform scale-110">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-pink-500/20 border-[6px] border-pink-500 flex items-center justify-center mb-6 shadow-[0_0_60px_rgba(236,72,153,0.5)]">
                             <i class="fa-solid fa-gift text-6xl text-pink-500"></i>
                         </div>
-                        <div class="text-3xl font-bold text-pink-400">2. Phần Thưởng</div>
-                        <div class="text-body text-lg mt-1 text-gray-300">Biến đổi</div>
+                        <div class="text-4xl font-bold text-pink-400">2. Phần Thưởng</div>
+                        <div class="text-body text-xl mt-2 text-pink-200">Biến đổi (Variable)</div>
                     </div>
                     
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
-                    <div class="text-center z-10">
-                        <i class="fa-solid fa-rotate text-6xl text-gray-400 mb-4"></i>
-                        <div class="text-2xl font-bold">3. Lặp Lại</div>
-                        <div class="text-body text-sm mt-1">Vô thức</div>
+                    <i class="fa-solid fa-arrow-right text-5xl text-pink-500/50 animate-pulse"></i>
+                    
+                    <div class="text-center z-10 w-1/3">
+                        <div class="w-24 h-24 mx-auto rounded-full bg-white/5 flex items-center justify-center mb-4 border border-white/10">
+                            <i class="fa-solid fa-rotate text-5xl text-gray-300"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-white">3. Lặp Lại</div>
+                        <div class="text-body text-lg mt-2 text-gray-400">Vô thức</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 6. GIẢI PHÁP (Góc dưới Phải - Bổ sung nội dung chi tiết) -->
-        <div class="col-span-12 row-span-4 grid grid-cols-2 gap-10 mt-[-3rem] pt-[3rem]">
+        <!-- 6. GIẢI PHÁP (Góc dưới Phải - Chi tiết hơn) -->
+        <div class="col-span-12 row-span-4 grid grid-cols-2 gap-12 mt-[-3rem] pt-[3rem]">
             
             <!-- Giải pháp 1: Private Messaging -->
             <div class="infographic-card border-sol">
                 <span class="badge" style="color: #34d399; border-color: #34d399;">04. Giải Pháp: Vùng An Toàn Số</span>
-                <div class="flex flex-col items-center text-center h-full pt-4">
-                    <i class="fa-solid fa-shield-halved text-[6rem] text-emerald-400 mb-6"></i>
-                    <h3 class="text-h2 text-white mb-4">Private Messaging</h3>
-                    <div class="bg-black/30 p-6 rounded-2xl w-full border border-white/5 text-left">
-                        <p class="text-body text-xl mb-4">Chuyển từ MXH công khai (Facebook/TikTok) sang các nhóm kín (Zalo/Discord):</p>
-                        <ul class="text-body text-lg space-y-2 pl-4">
-                            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Giảm so sánh xã hội</strong> (Toxic comparison).</li>
-                            <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Tăng kết nối sâu (Bonding) với bạn bè thật.</li>
+                <div class="flex flex-col items-center text-center h-full justify-center">
+                    <i class="fa-solid fa-shield-halved text-[8rem] text-emerald-400 mb-8"></i>
+                    <h3 class="text-h2 text-white mb-6">Private Messaging</h3>
+                    <div class="bg-black/30 p-8 rounded-3xl w-full border border-white/10 text-left">
+                        <p class="text-body text-2xl mb-6 font-semibold text-emerald-100">Chuyển từ MXH công khai sang các nhóm kín (Zalo/Discord):</p>
+                        <ul class="text-body text-xl space-y-4 pl-2">
+                            <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mr-4 mt-1"></i><span><strong>Tránh "Toxic Comparison":</strong> Không còn áp lực phải so sánh với hình ảnh hào nhoáng của người khác.</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mr-4 mt-1"></i><span><strong>Tăng Bonding Capital:</strong> Củng cố các mối quan hệ sâu sắc và thực chất hơn.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -292,17 +308,17 @@
             <!-- Giải pháp 2: Grounding -->
             <div class="infographic-card border-white/50">
                 <span class="badge" style="color: #fff; border-color: #fff;">05. Kỹ Thuật Grounding</span>
-                <div class="flex flex-col items-center text-center h-full pt-4">
-                    <i class="fa-solid fa-tree text-[6rem] text-white mb-6"></i>
-                    <h3 class="text-h2 text-white mb-4">Quy Tắc 5-4-3-2-1</h3>
-                    <div class="bg-black/30 p-6 rounded-2xl w-full border border-white/5 text-left">
-                        <p class="text-body text-xl mb-4 text-center italic">"Ngắt mạch lo âu bằng giác quan"</p>
-                        <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-body text-lg">
-                            <div><strong class="text-white">5</strong> Vật nhìn thấy <i class="fa-solid fa-eye ml-1 opacity-50"></i></div>
-                            <div><strong class="text-white">4</strong> Vật chạm được <i class="fa-solid fa-hand ml-1 opacity-50"></i></div>
-                            <div><strong class="text-white">3</strong> Âm thanh nghe <i class="fa-solid fa-ear-listen ml-1 opacity-50"></i></div>
-                            <div><strong class="text-white">2</strong> Mùi ngửi thấy <i class="fa-solid fa-wind ml-1 opacity-50"></i></div>
-                            <div class="col-span-2 text-center border-t border-white/10 pt-2 mt-1"><strong class="text-white">1</strong> Điều biết ơn <i class="fa-solid fa-heart ml-1 opacity-50"></i></div>
+                <div class="flex flex-col items-center text-center h-full justify-center">
+                    <i class="fa-solid fa-tree text-[8rem] text-white mb-8"></i>
+                    <h3 class="text-h2 text-white mb-6">Quy Tắc 5-4-3-2-1</h3>
+                    <div class="bg-black/30 p-8 rounded-3xl w-full border border-white/10 text-left">
+                        <p class="text-body text-2xl mb-6 text-center italic text-gray-300">"Kéo tâm trí về thực tại, ngắt mạch lo âu"</p>
+                        <div class="grid grid-cols-2 gap-x-8 gap-y-4 text-body text-xl">
+                            <div class="flex items-center bg-white/5 p-3 rounded-lg"><strong class="text-white text-3xl mr-4 w-8">5</strong> Nhìn thấy <i class="fa-solid fa-eye ml-auto opacity-50"></i></div>
+                            <div class="flex items-center bg-white/5 p-3 rounded-lg"><strong class="text-white text-3xl mr-4 w-8">4</strong> Chạm được <i class="fa-solid fa-hand ml-auto opacity-50"></i></div>
+                            <div class="flex items-center bg-white/5 p-3 rounded-lg"><strong class="text-white text-3xl mr-4 w-8">3</strong> Nghe thấy <i class="fa-solid fa-ear-listen ml-auto opacity-50"></i></div>
+                            <div class="flex items-center bg-white/5 p-3 rounded-lg"><strong class="text-white text-3xl mr-4 w-8">2</strong> Ngửi được <i class="fa-solid fa-wind ml-auto opacity-50"></i></div>
+                            <div class="col-span-2 flex items-center justify-center bg-white/10 p-3 rounded-lg border border-white/20 mt-2"><strong class="text-white text-3xl mr-4">1</strong> Điều bạn biết ơn <i class="fa-solid fa-heart ml-4 text-pink-500"></i></div>
                         </div>
                     </div>
                 </div>
@@ -310,16 +326,16 @@
         </div>
 
         <!-- 7. FOOTER -->
-        <div class="col-span-12 flex justify-between items-end border-t-2 border-white/20 pt-8 opacity-60">
-            <div class="text-3xl font-display font-bold">GEN Z RESEARCH LAB • 2025</div>
-            <div class="text-2xl font-mono">DỮ LIỆU: WHO, UNICEF, CDC, YRBS</div>
+        <div class="col-span-12 flex justify-between items-end border-t-2 border-white/20 pt-10 opacity-60">
+            <div class="text-4xl font-display font-bold text-white">GEN Z RESEARCH LAB • 2025</div>
+            <div class="text-3xl font-mono text-gray-400">DỮ LIỆU: WHO, UNICEF, CDC, YRBS</div>
         </div>
 
     </div>
 
     <script>
         // CẤU HÌNH BIỂU ĐỒ - FONT SIZE LỚN
-        Chart.defaults.font.size = 32;
+        Chart.defaults.font.size = 36;
         Chart.defaults.font.family = 'Space Grotesk';
         Chart.defaults.color = '#cbd5e1';
         
@@ -327,13 +343,13 @@
         new Chart(document.getElementById('genderChart'), {
             type: 'bar',
             data: {
-                labels: ['Nam', 'Nữ', 'LGBTQ+'], // Giữ label để đảm bảo trục Y đúng
+                labels: ['Nam', 'Nữ', 'LGBTQ+'], 
                 datasets: [{
                     data: [28, 53, 65.7],
                     backgroundColor: ['rgba(255,255,255,0.2)', '#818cf8', '#c084fc'],
                     borderWidth: 0,
-                    borderRadius: 15,
-                    barThickness: 70
+                    borderRadius: 20,
+                    barThickness: 90 // Tăng độ dày cột
                 }]
             },
             options: {
@@ -345,7 +361,7 @@
                     x: { display: false },
                     y: { 
                         grid: { display: false },
-                        ticks: { font: { size: 36, weight: 'bold' }, color: '#fff' }
+                        ticks: { font: { size: 42, weight: 'bold' }, color: '#fff' }
                     }
                 },
                 animation: false
@@ -361,7 +377,7 @@
                     data: [30, 40, 30],
                     backgroundColor: ['#34d399', '#facc15', '#f87171'],
                     borderWidth: 0,
-                    cutout: '70%'
+                    cutout: '65%' // Dày hơn chút
                 }]
             },
             options: {
