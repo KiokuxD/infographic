@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.1">
-    <title>Gen Z Report - A0 Infographic (Final Print Ready)</title>
+    <title>Gen Z Report - A0 Infographic (Print Safe Layout)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -45,7 +45,8 @@
             color: #f8fafc;
             width: 100%; min-height: 100vh;
             overflow: auto; /* Cho phép cuộn để xem hết ảnh */
-            display: flex; justify-content: center;
+            /* ĐÃ XÓA FLEXBOX CĂN GIỮA ĐỂ TRÁNH LỖI CHỤP ẢNH */
+            display: block; 
         }
 
         /* KHUNG A0 CHUẨN */
@@ -65,6 +66,9 @@
             padding: 5rem;
             box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            
+            /* CĂN GIỮA BẰNG MARGIN AUTO (An toàn cho chụp ảnh) */
+            margin: 0 auto;
         }
 
         /* GRID BACKGROUND EFFECT */
@@ -121,7 +125,7 @@
         .border-mech { border-color: #f472b6; }
         .border-sol { border-color: #34d399; }
         
-        /* CHART LEGEND (Add back for clarity if needed, or keep minimal) */
+        /* CHART LEGEND */
         .legend-box { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
         .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.6rem; color: #cbd5e1; }
         .dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-block; }
