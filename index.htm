@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <!-- ĐÃ SỬA: SCALE=1.0 ĐỂ ĐẢM BẢO ĐỘ PHÂN GIẢI GỐC CAO NHẤT -->
+    <!-- SCALE=1.0 ĐỂ ĐẢM BẢO ĐỘ PHÂN GIẢI GỐC CAO NHẤT -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gen Z Report - A0 Infographic (High Res Print)</title>
     
@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FONT: SPACE GROTESK (Như bản gốc) & INTER -->
+    <!-- FONT: SPACE GROTESK & INTER -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
@@ -19,16 +19,17 @@
                 extend: {
                     colors: {
                         'bg-dark': '#0B0F19',
-                        'accent-primary': '#38bdf8', /* Sky Blue cũ */
+                        'accent-primary': '#38bdf8', /* Sky Blue */
                         'accent-secondary': '#818cf8', /* Indigo */
                         'accent-alert': '#f87171', /* Red */
-                        'text-main': '#f8fafc',
-                        'card-bg': 'rgba(30, 41, 59, 0.5)',
-                        'card-border': 'rgba(255, 255, 255, 0.1)',
+                        'text-main': '#ffffff', 
+                        'text-body': '#e2e8f0',
+                        'card-bg': 'rgba(30, 41, 59, 0.6)',
+                        'card-border': 'rgba(255, 255, 255, 0.15)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'], /* Font tiêu đề cũ */
+                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     spacing: {
                         'a0-w': '2384px', 
@@ -46,7 +47,7 @@
             color: #f8fafc;
             width: 100%; min-height: 100vh;
             overflow: auto; 
-            display: block; /* Giữ layout block để tránh lỗi chụp ảnh */
+            display: block;
         }
 
         /* KHUNG A0 CHUẨN */
@@ -61,13 +62,11 @@
             overflow: hidden;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 150px repeat(14, 1fr) 100px; /* Header cố định 200px, Footer 100px */
+            grid-template-rows: 150px repeat(14, 1fr) 100px;
             gap: 2.5rem;
-            padding: 5rem;
+            padding: 4rem; 
             box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            
-            /* CĂN GIỮA BẰNG MARGIN AUTO */
             margin: 0 auto;
         }
 
@@ -85,7 +84,7 @@
             background: var(--card-bg);
             border: 3px solid var(--card-border);
             border-radius: 2rem;
-            padding: 3rem;
+            padding: 2.5rem; 
             position: relative;
             z-index: 2;
             backdrop-filter: blur(10px);
@@ -95,29 +94,29 @@
         /* TYPOGRAPHY - SCALED FOR A0 */
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         
-        .text-hero { font-size: 8rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
-        .text-h1 { font-size: 4.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-        .text-h2 { font-size: 3rem; font-weight: 600; margin-bottom: 1.5rem; }
-        .text-h3 { font-size: 2.2rem; font-weight: 600; margin-bottom: 1rem; color: #e2e8f0; }
-        .text-body { font-size: 1.6rem; line-height: 1.6; color: #94a3b8; }
+        .text-hero { font-size: 8rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; color: #ffffff; }
+        .text-h1 { font-size: 4.8rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #ffffff; } 
+        .text-h2 { font-size: 3.6rem; font-weight: 600; margin-bottom: 1.2rem; color: #f8fafc; } 
+        .text-h3 { font-size: 2.8rem; font-weight: 600; margin-bottom: 0.8rem; color: #e2e8f0; } 
+        .text-body { font-size: 2.1rem; line-height: 1.4; color: #e2e8f0; } 
         .text-highlight { color: #38bdf8; }
         
-        /* DECORATIONS - TĂNG KÍCH THƯỚC THẺ 01-05 */
+        /* DECORATIONS */
         .badge {
             display: inline-block; 
-            padding: 0.8rem 2.5rem; /* Tăng padding */
-            background: rgba(56, 189, 248, 0.1); 
-            border: 3px solid rgba(56, 189, 248, 0.3); /* Viền dày hơn chút */
-            color: #38bdf8; 
+            padding: 0.6rem 2.2rem;
+            background: rgba(56, 189, 248, 0.15);
+            border: 3px solid rgba(56, 189, 248, 0.5);
+            color: #7dd3fc;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem; /* TĂNG KÍCH THƯỚC CHỮ LÊN */
+            font-size: 2.0rem;
             font-weight: 700; 
             text-transform: uppercase;
             border-radius: 99px; 
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; 
         }
 
-        .divider { width: 100%; height: 3px; background: rgba(255,255,255,0.1); margin: 2rem 0; }
+        .divider { width: 100%; height: 3px; background: rgba(255,255,255,0.2); margin: 1.5rem 0; }
 
         /* SPECIFIC COLORS */
         .border-economy { border-color: #38bdf8; }
@@ -126,8 +125,8 @@
         .border-sol { border-color: #34d399; }
         
         /* CHART LEGEND */
-        .legend-box { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
-        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.6rem; color: #cbd5e1; }
+        .legend-box { display: flex; gap: 1.5rem; margin-top: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 2.1rem; color: #f1f5f9; font-weight: 500; }
         .dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-block; }
 
     </style>
@@ -138,178 +137,236 @@
         <div class="bg-grid"></div>
 
         <!-- 1. HEADER (Top Full Width) -->
-        <div class="col-span-12 row-span-2 flex items-center justify-between border-b-4 border-white/10 pb-8 z-10">
+        <div class="col-span-12 row-span-2 flex items-center justify-between border-b-4 border-white/20 pb-4 z-10">
             <div>
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-20 h-20 rounded-full bg-accent-primary flex items-center justify-center text-black text-4xl">
+                <div class="flex items-center gap-4 mb-2">
+                    <div class="w-20 h-20 rounded-full bg-accent-primary flex items-center justify-center text-black text-4xl shadow-[0_0_30px_rgba(56,189,248,0.6)]">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <span class="text-3xl font-display font-bold tracking-widest text-accent-primary uppercase">Gen Z Report 2025</span>
+                    <span class="text-3xl font-display font-bold tracking-widest text-accent-primary uppercase drop-shadow-md">Gen Z Report 2025</span>
                 </div>
-                <h1 class="text-hero font-display text-white">
+                <h1 class="text-hero font-display text-white drop-shadow-lg">
                     GIẢI MÃ <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">ĐA KHỦNG HOẢNG</span>
                 </h1>
             </div>
-            <div class="text-right max-w-3xl">
-                <p class="text-body text-2xl border-l-8 border-accent-primary pl-8">
+            <div class="text-right max-w-3xl flex items-center">
+                <p class="text-body border-l-8 border-accent-primary pl-8 text-white font-light italic">
                     "Không chỉ là nỗi buồn vu vơ. Đây là sự hội tụ của áp lực số, bất ổn kinh tế và sự đứt gãy kết nối xã hội."
                 </p>
             </div>
         </div>
 
         <!-- 2. HERO STAT (Left Column) -->
-        <div class="col-span-4 row-span-5 infographic-card border-accent-alert/50 bg-gradient-to-br from-accent-alert/5 to-transparent flex items-center justify-center text-center">
-            <i class="fa-solid fa-triangle-exclamation text-[12rem] text-accent-alert mb-12 opacity-80"></i>
-            <div class="text-[14rem] leading-none font-display font-bold text-accent-alert tracking-tighter">91.6<span class="text-[8rem]">%</span></div>
-            <h2 class="text-h2 font-display text-white mt-8">Khoảng Trống Điều Trị</h2>
-            <div class="divider bg-accent-alert/30"></div>
-            <p class="text-body px-8">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong>không tiếp cận được</strong> dịch vụ y tế.</p>
+        <!-- ĐÃ SỬA: SỬ DỤNG FLEX-COL VÀ JUSTIFY-BETWEEN ĐỂ TẬN DỤNG KHOẢNG TRẮNG CHO SỐ LỚN -->
+        <div class="col-span-4 row-span-5 infographic-card border-accent-alert/50 bg-gradient-to-br from-accent-alert/10 to-transparent flex flex-col items-center justify-between text-center py-10">
+            
+            <!-- Icon kích thước lớn 12rem -->
+            <div class="flex-1 flex items-center justify-center">
+                <i class="fa-solid fa-triangle-exclamation text-[12rem] text-accent-alert opacity-100 drop-shadow-[0_0_20px_rgba(248,113,113,0.4)]"></i>
+            </div>
+            
+            <!-- Số liệu kích thước cực đại 15rem, giảm line-height để không chiếm quá nhiều chỗ dọc -->
+            <div class="text-[15rem] leading-[0.9] font-display font-bold text-accent-alert tracking-tighter drop-shadow-md my-4">
+                91.6<span class="text-[9rem]">%</span>
+            </div>
+            
+            <!-- Nội dung text gom gọn bên dưới -->
+            <div class="w-full">
+                <h2 class="text-h2 font-display text-white mb-4">Khoảng Trống Điều Trị</h2>
+                <div class="divider bg-accent-alert/40 my-4"></div>
+                <p class="text-body px-4 font-medium">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong class="text-white">không tiếp cận được</strong> dịch vụ y tế.</p>
+            </div>
         </div>
 
-        <!-- 3. BỐI CẢNH (Middle - ĐÃ XÓA PHẢN KHÁNG THỤ ĐỘNG) -->
+        <!-- 3. BỐI CẢNH (Middle) -->
         <div class="col-span-4 row-span-5 infographic-card border-economy">
             <span class="badge">01. Bối Cảnh Vĩ Mô</span>
-            <h2 class="text-h1 font-display text-accent-primary mb-12">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
+            <h2 class="text-h1 font-display text-accent-primary mb-8 drop-shadow-md">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
             
-            <div class="space-y-12 flex-1">
+            <div class="space-y-6 flex-1 flex flex-col justify-center">
                 <!-- Stat Block 1 -->
-                <div class="bg-black/40 p-10 rounded-3xl border border-white/10 flex gap-8">
-                    <i class="fa-solid fa-chart-line text-7xl text-gray-500"></i>
+                <div class="bg-black/50 p-8 rounded-3xl border border-white/20 flex gap-6 hover:bg-white/5 transition-colors items-center h-full">
+                    <i class="fa-solid fa-chart-line text-6xl text-gray-300"></i>
                     <div>
-                        <h3 class="text-h2 text-white mb-2">< 2%</h3>
-                        <p class="text-body">Tổng tài sản quốc gia Gen Z nắm giữ. Dẫn đến hành vi "Doom Spending".</p>
+                        <h3 class="text-h2 text-white mb-1">< 2%</h3>
+                        <p class="text-body text-gray-200">Tổng tài sản quốc gia Gen Z nắm giữ. Dẫn đến hành vi <span class="text-accent-primary font-bold">"Doom Spending"</span>.</p>
                     </div>
                 </div>
 
                 <!-- Stat Block 2 -->
-                <div class="bg-black/40 p-10 rounded-3xl border border-white/10 flex gap-8">
-                    <i class="fa-solid fa-people-roof text-7xl text-gray-500"></i>
+                <div class="bg-black/50 p-8 rounded-3xl border border-white/20 flex gap-6 hover:bg-white/5 transition-colors items-center h-full">
+                    <i class="fa-solid fa-people-roof text-6xl text-gray-300"></i>
                     <div>
-                        <h3 class="text-h2 text-white mb-2">Bộ Lạc Kangaroo</h3>
-                        <p class="text-body">56% thanh niên Hàn Quốc sống phụ thuộc cha mẹ, từ chối trưởng thành.</p>
+                        <h3 class="text-h2 text-white mb-1">Bộ Lạc Kangaroo</h3>
+                        <p class="text-body text-gray-200">56% thanh niên Hàn Quốc sống phụ thuộc cha mẹ, <span class="text-white font-semibold">từ chối trưởng thành</span>.</p>
                     </div>
                 </div>
-
-                <!-- KHOẢNG TRỐNG TỰ NHIÊN ĐƯỢC GIỮ LẠI -->
             </div>
         </div>
 
         <!-- 4. DỮ LIỆU (Right Column) -->
         <div class="col-span-4 row-span-8 infographic-card border-data">
-            <span class="badge" style="color: #818cf8; border-color: #818cf8;">02. Dữ Liệu Chuyên Sâu</span>
+            <span class="badge" style="color: #a5b4fc; border-color: #818cf8;">02. Dữ Liệu Chuyên Sâu</span>
             
             <!-- Chart 1 -->
-            <div class="mb-12 flex-1 flex flex-col">
-                <h3 class="text-h2 font-display mb-6">Tỷ Lệ Trầm Cảm</h3>
-                <div class="flex-1 w-full bg-black/20 rounded-3xl p-6 border border-white/5">
-                    <canvas id="genderChart"></canvas>
+            <div class="mb-8 flex-1 flex flex-col">
+                <h3 class="text-h2 font-display mb-4">Tỷ Lệ Trầm Cảm</h3>
+                <div class="flex-1 w-full bg-black/30 rounded-3xl p-4 border border-white/10 relative">
+                    <div class="absolute inset-0 p-4">
+                        <canvas id="genderChart"></canvas>
+                    </div>
                 </div>
-                <!-- Legend -->
                 <div class="legend-box">
-                    <div class="legend-item"><span class="dot bg-white/20"></span>Nam (28%)</div>
+                    <div class="legend-item"><span class="dot bg-white"></span>Nam (28%)</div>
                     <div class="legend-item"><span class="dot bg-indigo-400"></span>Nữ (53%)</div>
                     <div class="legend-item text-purple-300 font-bold"><span class="dot bg-purple-400"></span>LGBTQ+ (65.7%)</div>
                 </div>
-                <p class="text-body mt-4 text-indigo-300"><i class="fa-solid fa-circle-info mr-2"></i><strong>LGBTQ+</strong> chịu áp lực gấp đôi nhóm dị tính.</p>
+                <p class="text-body mt-2 text-indigo-200 text-center"><i class="fa-solid fa-circle-info mr-2"></i><strong>LGBTQ+</strong> chịu áp lực gấp đôi.</p>
             </div>
 
             <div class="divider"></div>
 
-            <!-- Chart 2 -->
-            <div class="flex-1 flex flex-col">
-                <h3 class="text-h2 font-display mb-6">Ngưỡng Rủi Ro Số</h3>
-                <div class="flex-1 w-full flex items-center justify-center relative">
-                    <canvas id="screenChart"></canvas>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-10">
-                        <span class="text-[6rem] font-bold font-display leading-none">3h</span>
-                        <span class="text-2xl font-mono uppercase">Điểm Bùng Phát</span>
+            <!-- Chart 2: TẬN DỤNG KHOẢNG TRẮNG ĐỂ CHART TO HƠN -->
+            <div class="flex-1 flex flex-col justify-between">
+                <h3 class="text-h2 font-display mb-2">Ngưỡng Rủi Ro Số</h3>
+                
+                <!-- Container chart mở rộng tối đa -->
+                <div class="flex-1 w-full flex items-center justify-center relative min-h-0 py-4">
+                    <div class="w-full h-full relative">
+                         <canvas id="screenChart"></canvas>
+                    </div>
+                    <!-- Chữ trung tâm cực đại 7rem -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-4">
+                        <span class="text-[7rem] font-bold font-display leading-none text-white drop-shadow-lg">3h</span>
+                        <span class="text-2xl font-mono uppercase text-gray-200 mt-2">Điểm Bùng Phát</span>
                     </div>
                 </div>
-                <div class="flex justify-between mt-4 px-4 text-center">
-                    <div><span class="block text-4xl font-bold text-green-400">< 2h</span><span class="text-xl opacity-60">An toàn</span></div>
-                    <div><span class="block text-4xl font-bold text-red-400">5h+</span><span class="text-xl opacity-60">Nguy hiểm</span></div>
+                
+                <div class="flex justify-between mt-2 px-2 text-center pb-2">
+                    <div><span class="block text-4xl font-bold text-green-400 drop-shadow">< 2h</span><span class="text-xl text-gray-300">An toàn</span></div>
+                    <div><span class="block text-4xl font-bold text-red-400 drop-shadow">5h+</span><span class="text-xl text-gray-300">Nguy hiểm</span></div>
                 </div>
             </div>
         </div>
 
         <!-- 5. CƠ CHẾ (Bottom Left - Wide) -->
         <div class="col-span-8 row-span-4 infographic-card border-mech">
-            <span class="badge" style="color: #f472b6; border-color: #f472b6;">03. Cơ Chế Thần Kinh</span>
-            <div class="flex items-center gap-12 h-full">
+            <span class="badge" style="color: #f9a8d4; border-color: #f472b6;">03. Cơ Chế Thần Kinh</span>
+            <div class="flex items-center gap-8 h-full">
                 <div class="w-1/3">
-                    <h2 class="text-h1 font-display text-pink-400 mb-6">Vòng Lặp<br>Dopamine</h2>
-                    <p class="text-body">
-                        Video ngắn 15s hoạt động như máy đánh bạc (Slot Machine). Sự <strong>không chắc chắn (Uncertainty)</strong> của nội dung tiếp theo khiến não bộ bị "kẹt" trong trạng thái hưng phấn ngắn hạn.
+                    <h2 class="text-h1 font-display text-pink-400 mb-4 drop-shadow-md">Vòng Lặp<br>Dopamine</h2>
+                    <p class="text-body text-gray-100">
+                        Video ngắn 15s hoạt động như máy đánh bạc (Slot Machine). Sự <strong class="text-pink-300">không chắc chắn (Uncertainty)</strong> khiến não bộ bị "kẹt".
                     </p>
                 </div>
-                <div class="w-2/3 bg-black/40 rounded-[3rem] p-12 flex justify-between items-center relative border border-white/10">
+                <div class="w-2/3 bg-black/50 rounded-[3rem] p-8 flex justify-between items-center relative border border-white/20 h-full">
                     <!-- Steps -->
-                    <div class="text-center z-10">
-                        <i class="fa-solid fa-hand-pointer text-6xl text-gray-400 mb-4"></i>
-                        <div class="text-2xl font-bold">Kích Thích</div>
-                        <div class="text-lg opacity-60 mt-2">Video 15s</div>
+                    <div class="text-center z-10 flex flex-col justify-center">
+                        <i class="fa-solid fa-hand-pointer text-5xl text-white mb-2 drop-shadow"></i>
+                        <div class="text-2xl font-bold text-white">Kích Thích</div>
+                        <div class="text-lg text-gray-300">Video 15s</div>
                     </div>
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
                     
-                    <div class="text-center z-10 transform scale-125">
-                        <!-- THÊM mx-auto ĐỂ CĂN GIỮA ICON -->
-                        <div class="w-40 h-40 mx-auto rounded-full bg-pink-500/20 border-4 border-pink-500 flex items-center justify-center mb-6 shadow-[0_0_60px_rgba(236,72,153,0.4)]">
-                            <i class="fa-solid fa-gift text-7xl text-pink-500"></i>
+                    <i class="fa-solid fa-arrow-right text-4xl text-gray-400"></i>
+                    
+                    <div class="text-center z-10 transform scale-110 flex flex-col justify-center">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-pink-500/30 border-4 border-pink-400 flex items-center justify-center mb-4 shadow-[0_0_60px_rgba(236,72,153,0.5)]">
+                            <i class="fa-solid fa-gift text-6xl text-pink-400"></i>
                         </div>
-                        <div class="text-3xl font-bold text-pink-400">Phần Thưởng</div>
-                        <div class="text-xl text-gray-400 mt-2">Biến đổi</div>
+                        <div class="text-3xl font-bold text-pink-300">Phần Thưởng</div>
+                        <div class="text-xl text-gray-200">Biến đổi</div>
                     </div>
                     
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-600"></i>
-                    <div class="text-center z-10">
-                        <i class="fa-solid fa-rotate text-6xl text-gray-400 mb-4"></i>
-                        <div class="text-2xl font-bold">Lặp Lại</div>
-                        <div class="text-lg opacity-60 mt-2">Vô thức</div>
+                    <i class="fa-solid fa-arrow-right text-4xl text-gray-400"></i>
+                    
+                    <div class="text-center z-10 flex flex-col justify-center">
+                        <i class="fa-solid fa-rotate text-5xl text-white mb-2 drop-shadow"></i>
+                        <div class="text-2xl font-bold text-white">Lặp Lại</div>
+                        <div class="text-lg text-gray-300">Vô thức</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 6. GIẢI PHÁP (Bottom Right - Same height as Mech) -->
-        <div class="col-span-12 row-span-4 grid grid-cols-2 gap-10 mt-[-2.5rem] pt-[2.5rem]"> 
+        <!-- 6. GIẢI PHÁP (Bottom Right) -->
+        <div class="col-span-12 row-span-4 grid grid-cols-2 gap-8 mt-[-1.5rem] pt-[1.5rem]"> 
             
-            <div class="infographic-card border-sol">
-                <span class="badge" style="color: #34d399; border-color: #34d399;">04. Giải Pháp: Vùng An Toàn Số</span>
-                <div class="flex flex-col items-center justify-center text-center h-full">
-                    <i class="fa-solid fa-shield-halved text-[8rem] text-emerald-400 mb-8"></i>
-                    <h3 class="text-3xl font-bold text-white mb-4">Private Messaging</h3>
-                    <p class="text-body text-2xl px-12">
-                        Chuyển từ MXH công khai sang <strong>nhóm chat kín</strong> (Zalo/Discord) để tìm kiếm sự hỗ trợ đồng đẳng và giảm áp lực so sánh (Toxic Comparison).
-                    </p>
+            <!-- LEFT: Private Messaging (Đã bổ sung nội dung) -->
+            <div class="infographic-card border-sol flex flex-col items-center justify-start text-center h-full pt-8">
+                <span class="badge mb-6" style="color: #6ee7b7; border-color: #34d399;">04. Giải Pháp: Vùng An Toàn</span>
+                <i class="fa-solid fa-shield-halved text-[6rem] text-emerald-400 mb-6 drop-shadow-[0_0_25px_rgba(52,211,153,0.4)]"></i>
+                <h3 class="text-3xl font-bold text-white mb-6">Private Messaging</h3>
+                
+                <div class="text-left w-full px-8 space-y-4">
+                     <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
+                        <p class="text-body text-gray-100"><strong class="text-emerald-300">Micro-Community:</strong> Chuyển từ "lướt" public feed sang tương tác sâu trong nhóm nhỏ (Zalo/Discord).</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
+                        <p class="text-body text-gray-100"><strong class="text-emerald-300">No Filter:</strong> Giảm áp lực trình diễn (Performance Pressure), tăng sự chân thật và thấu cảm.</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                     <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
+                        <p class="text-body text-gray-100"><strong class="text-emerald-300">Curate Feed:</strong> Chủ động thanh lọc và bỏ theo dõi các nội dung độc hại (Toxic Content).</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="infographic-card border-white/50">
-                <span class="badge" style="color: #fff; border-color: #fff;">05. Kỹ Thuật Grounding</span>
-                <div class="flex flex-col items-center justify-center text-center h-full">
-                    <i class="fa-solid fa-tree text-[8rem] text-white mb-8"></i>
-                    <h3 class="text-3xl font-bold text-white mb-4">Quy Tắc 5-4-3-2-1</h3>
-                    <p class="text-body text-2xl px-12">
-                        Tìm <strong>5</strong> vật nhìn thấy, <strong>4</strong> vật chạm được, <strong>3</strong> âm thanh... để tái kết nối với thực tại vật lý và ngắt mạch lo âu ngay lập tức.
-                    </p>
+            <!-- RIGHT: Grounding (Đã trình bày rõ 5 bước) -->
+            <div class="infographic-card border-white/50 bg-white/5 flex flex-col items-center justify-start text-center h-full pt-8">
+                <span class="badge mb-6" style="color: #fff; border-color: #fff;">05. Kỹ Thuật Grounding</span>
+                <i class="fa-solid fa-tree text-[6rem] text-white mb-6 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"></i>
+                <h3 class="text-3xl font-bold text-white mb-6">Quy Tắc 5-4-3-2-1</h3>
+                
+                <div class="text-left w-full px-12 space-y-3">
+                    <div class="flex items-center gap-6">
+                        <strong class="text-white text-[3rem] w-[1.5rem]">5</strong> 
+                        <p class="text-body text-gray-100">Thứ bạn <span class="text-gray-300">nhìn thấy</span> (Thị giác)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                    
+                    <div class="flex items-center gap-6">
+                        <strong class="text-white text-[3rem] w-[1.5rem]">4</strong> 
+                        <p class="text-body text-gray-100">Thứ bạn <span class="text-gray-300">chạm được</span> (Xúc giác)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                    
+                    <div class="flex items-center gap-6">
+                        <strong class="text-white text-[3rem] w-[1.5rem]">3</strong> 
+                        <p class="text-body text-gray-100">Âm thanh bạn <span class="text-gray-300">nghe thấy</span> (Thính giác)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                    
+                    <div class="flex items-center gap-6">
+                        <strong class="text-white text-[3rem] w-[1.5rem]">2</strong> 
+                        <p class="text-body text-gray-100">Mùi hương bạn <span class="text-gray-300">ngửi được</span> (Khứu giác)</p>
+                    </div>
+                    <div class="w-full h-[1px] bg-white/10"></div>
+                    
+                    <div class="flex items-center gap-6">
+                        <strong class="text-white text-[3rem] w-[1.5rem]">1</strong> 
+                        <p class="text-body text-gray-100">Vị bạn <span class="text-gray-300">nếm được</span> (Vị giác)</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- 7. FOOTER -->
-        <div class="col-span-12 flex justify-between items-end border-t border-white/20 pt-8 opacity-60">
-            <div class="text-3xl font-display font-bold">GEN Z RESEARCH LAB • 2025</div>
-            <div class="text-2xl font-mono">DỮ LIỆU: WHO, UNICEF, CDC, YRBS</div>
+        <div class="col-span-12 flex justify-between items-end border-t border-white/30 pt-4 opacity-90 text-white">
+            <div class="text-4xl font-display font-bold">GEN Z RESEARCH LAB • 2025</div>
+            <div class="text-3xl font-mono text-gray-300">DỮ LIỆU: WHO, UNICEF, CDC, YRBS</div>
         </div>
 
     </div>
 
     <script>
         // CẤU HÌNH BIỂU ĐỒ CHO KHỔ A0
-        // Tăng kích thước font cực đại để dễ đọc khi in
         Chart.defaults.font.size = 36;
         Chart.defaults.font.family = 'Space Grotesk';
-        Chart.defaults.color = '#cbd5e1';
+        Chart.defaults.color = '#f1f5f9';
         
         // 1. Gender Chart
         new Chart(document.getElementById('genderChart'), {
@@ -318,7 +375,7 @@
                 labels: ['Nam', 'Nữ', 'LGBTQ+'],
                 datasets: [{
                     data: [28, 53, 65.7],
-                    backgroundColor: ['rgba(255,255,255,0.1)', '#818cf8', '#c084fc'],
+                    backgroundColor: ['rgba(255,255,255,0.3)', '#818cf8', '#c084fc'],
                     borderWidth: 0,
                     borderRadius: 20,
                     barThickness: 80
@@ -333,7 +390,7 @@
                     x: { display: false },
                     y: { 
                         grid: { display: false },
-                        ticks: { font: { size: 40, weight: 'bold' }, color: '#fff' }
+                        ticks: { font: { size: 36, weight: 'bold' }, color: '#ffffff' } 
                     }
                 },
                 animation: false
