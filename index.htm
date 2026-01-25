@@ -1,422 +1,648 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GZVF7F7P9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2GZVF7F7P9');
+    </script>
+
     <meta charset="UTF-8">
-    <!-- SCALE=1.0 ĐỂ ĐẢM BẢO ĐỘ PHÂN GIẢI GỐC CAO NHẤT -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gen Z Report - A0 Infographic (High Res Print)</title>
+    
+    <title>Gen Z: Giải Mã Đa Khủng Hoảng (2025 Edition)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FONT: SPACE GROTESK & INTER -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- THAY ĐỔI FONT: Playfair Display cho tiêu đề (Sang trọng) & Inter cho nội dung (Dễ đọc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'bg-dark': '#0B0F19',
-                        'accent-primary': '#38bdf8', /* Sky Blue */
-                        'accent-secondary': '#818cf8', /* Indigo */
-                        'accent-alert': '#f87171', /* Red */
-                        'text-main': '#ffffff', 
-                        'text-body': '#e2e8f0',
-                        'card-bg': 'rgba(30, 41, 59, 0.6)',
-                        'card-border': 'rgba(255, 255, 255, 0.15)',
+                        'theme-bg': 'var(--theme-bg)',
+                        'theme-text': 'var(--theme-text)',
+                        'theme-accent': 'var(--theme-accent)',
+                        'theme-panel': 'var(--theme-panel)',
+                        'danger-red-safe': '#FCA5A5',
+                        'danger-red': '#EF4444',
+                        'yellow-safe': '#FDE047',
+                        'cta-text': '#0B0F19',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'], // Font mới cho tiêu đề
                     },
-                    spacing: {
-                        'a0-w': '2384px', 
-                        'a0-h': '3370px', 
-                    }
                 }
             }
         }
     </script>
 
     <style>
+        :root {
+            --theme-bg: #121212;
+            --theme-text: #F8FAFC;
+            --theme-accent: #FDA4AF;
+            --theme-accent-rgb: 253, 164, 175;
+            --theme-panel: rgba(30, 41, 59, 0.4);
+            --bg-gradient: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                           radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                           radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+        }
+
         body {
-            margin: 0; padding: 0;
-            background-color: #000;
-            color: #f8fafc;
-            width: 100%; min-height: 100vh;
-            overflow: auto; 
-            display: block;
+            background-color: var(--theme-bg);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--theme-text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* KHUNG A0 CHUẨN */
-        .a0-container {
-            width: 2384px; height: 3370px;
-            background-color: #0f172a;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-            position: relative;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 150px repeat(14, 1fr) 100px;
-            gap: 2.5rem;
-            padding: 4rem; 
-            box-sizing: border-box;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            margin: 0 auto;
+        /* TEXTURE NOISE: Tạo chiều sâu vật lý */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* GRID BACKGROUND EFFECT */
-        .bg-grid {
-            position: absolute; inset: 0; pointer-events: none; z-index: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.03) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 2px, transparent 2px);
-            background-size: 80px 80px;
+        /* SCROLL PROGRESS */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--theme-accent); width: 0%; z-index: 100;
+            box-shadow: 0 0 15px var(--theme-accent);
         }
 
-        /* CARD STYLE */
-        .infographic-card {
-            background: var(--card-bg);
-            border: 3px solid var(--card-border);
-            border-radius: 2rem;
-            padding: 2.5rem; 
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(10px);
-            display: flex; flex-direction: column;
+        /* GLASS PANEL PRO: Viền phát sáng nhẹ */
+        .glass-panel {
+            background: var(--theme-panel);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Viền trên sáng hơn tạo khối */
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer; position: relative; overflow: hidden;
         }
-
-        /* TYPOGRAPHY - SCALED FOR A0 */
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .glass-panel:hover { 
+            transform: translateY(-6px); 
+            border-color: var(--theme-accent); 
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(var(--theme-accent-rgb), 0.1); 
+        }
         
-        .text-hero { font-size: 8rem; line-height: 1; letter-spacing: -0.04em; font-weight: 700; color: #ffffff; }
-        .text-h1 { font-size: 4.8rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #ffffff; } 
-        .text-h2 { font-size: 3.6rem; font-weight: 600; margin-bottom: 1.2rem; color: #f8fafc; } 
-        .text-h3 { font-size: 2.8rem; font-weight: 600; margin-bottom: 0.8rem; color: #e2e8f0; } 
-        .text-body { font-size: 2.1rem; line-height: 1.4; color: #e2e8f0; } 
-        .text-highlight { color: #38bdf8; }
+        .glass-header { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
-        /* DECORATIONS */
-        .badge {
-            display: inline-block; 
-            padding: 0.6rem 2.2rem;
-            background: rgba(56, 189, 248, 0.15);
-            border: 3px solid rgba(56, 189, 248, 0.5);
-            color: #7dd3fc;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.0rem;
-            font-weight: 700; 
-            text-transform: uppercase;
-            border-radius: 99px; 
-            margin-bottom: 1.5rem; 
+        .text-accent { color: var(--theme-accent); }
+        .bg-accent-10 { background-color: color-mix(in srgb, var(--theme-accent), transparent 90%); }
+        .border-accent { border-color: var(--theme-accent); }
+
+        /* CTA BUTTON GLOW */
+        .cta-button {
+            background-color: var(--theme-accent);
+            color: var(--theme-cta-text, #0B0F19) !important;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(var(--theme-accent-rgb), 0.4); /* Glow effect */
+            position: relative; overflow: hidden;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            background-color: color-mix(in srgb, var(--theme-accent), white 20%);
+            box-shadow: 0 0 30px rgba(var(--theme-accent-rgb), 0.7);
         }
 
-        .divider { width: 100%; height: 3px; background: rgba(255,255,255,0.2); margin: 1.5rem 0; }
+        /* TYPOGRAPHY */
+        .fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem); line-height: 1.05; letter-spacing: -0.02em; }
+        .fluid-p { font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.6; }
+        .font-serif { font-family: 'Playfair Display', serif; } /* Class cho tiêu đề */
 
-        /* SPECIFIC COLORS */
-        .border-economy { border-color: #38bdf8; }
-        .border-data { border-color: #818cf8; }
-        .border-mech { border-color: #f472b6; }
-        .border-sol { border-color: #34d399; }
+        /* MODAL & MENU */
+        #info-modal { transition: opacity 0.3s ease, visibility 0.3s; }
+        #info-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #info-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        .modal-content { background: rgba(20, 20, 25, 0.98); border: 1px solid var(--theme-accent); box-shadow: 0 0 100px rgba(0,0,0, 0.9); transform: scale(0.95); transition: transform 0.3s ease; }
+        #info-modal.visible-modal .modal-content { transform: scale(1); }
+        #mobile-menu { transition: max-height 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+        #mobile-menu.open { max-height: 300px; opacity: 1; }
         
-        /* CHART LEGEND */
-        .legend-box { display: flex; gap: 1.5rem; margin-top: 0.5rem; flex-wrap: wrap; justify-content: center; }
-        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 2.1rem; color: #f1f5f9; font-weight: 500; }
-        .dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-block; }
-
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--theme-bg); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .chart-container { position: relative; height: 300px; width: 100%; }
     </style>
 </head>
-<body>
+<body class="min-h-screen selection:bg-theme-accent selection:text-theme-bg">
 
-    <div class="a0-container">
-        <div class="bg-grid"></div>
+    <div id="scroll-progress"></div>
 
-        <!-- 1. HEADER (Top Full Width) -->
-        <div class="col-span-12 row-span-2 flex items-center justify-between border-b-4 border-white/20 pb-4 z-10">
-            <div>
-                <div class="flex items-center gap-4 mb-2">
-                    <div class="w-20 h-20 rounded-full bg-accent-primary flex items-center justify-center text-black text-4xl shadow-[0_0_30px_rgba(56,189,248,0.6)]">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <span class="text-3xl font-display font-bold tracking-widest text-accent-primary uppercase drop-shadow-md">Gen Z Report 2025</span>
+    <nav class="fixed w-full z-50 glass-header top-0">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-brain text-accent text-xl animate-pulse"></i>
+                    <span class="font-serif font-bold text-xl tracking-wide text-theme-text">GEN<span class="text-accent">Z</span> REPORT</span>
                 </div>
-                <h1 class="text-hero font-display text-white drop-shadow-lg">
-                    GIẢI MÃ <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">ĐA KHỦNG HOẢNG</span>
-                </h1>
+                <div class="hidden md:flex gap-8 text-sm font-medium opacity-80">
+                    <a href="#context" class="hover:text-accent transition hover:opacity-100">Bối Cảnh</a>
+                    <a href="#data" class="hover:text-accent transition hover:opacity-100">Số Liệu</a>
+                    <a href="#mechanism" class="hover:text-accent transition hover:opacity-100">Cơ Chế</a>
+                    <a href="#solutions" class="hover:text-accent transition hover:opacity-100">Giải Pháp</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="applyRandomTheme()" class="opacity-80 hover:text-accent transition hover:opacity-100" title="Đổi màu ngẫu nhiên">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                    <button id="menu-btn" class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+                </div>
             </div>
-            <div class="text-right max-w-3xl flex items-center">
-                <p class="text-body border-l-8 border-accent-primary pl-8 text-white font-light italic">
-                    "Không chỉ là nỗi buồn vu vơ. Đây là sự hội tụ của áp lực số, bất ổn kinh tế và sự đứt gãy kết nối xã hội."
-                </p>
-            </div>
-        </div>
-
-        <!-- 2. HERO STAT (Left Column) -->
-        <!-- ĐÃ SỬA: SỬ DỤNG FLEX-COL VÀ JUSTIFY-BETWEEN ĐỂ TẬN DỤNG KHOẢNG TRẮNG CHO SỐ LỚN -->
-        <div class="col-span-4 row-span-5 infographic-card border-accent-alert/50 bg-gradient-to-br from-accent-alert/10 to-transparent flex flex-col items-center justify-between text-center py-10">
-            
-            <!-- Icon kích thước lớn 12rem -->
-            <div class="flex-1 flex items-center justify-center">
-                <i class="fa-solid fa-triangle-exclamation text-[12rem] text-accent-alert opacity-100 drop-shadow-[0_0_20px_rgba(248,113,113,0.4)]"></i>
-            </div>
-            
-            <!-- Số liệu kích thước cực đại 15rem, giảm line-height để không chiếm quá nhiều chỗ dọc -->
-            <div class="text-[15rem] leading-[0.9] font-display font-bold text-accent-alert tracking-tighter drop-shadow-md my-4">
-                91.6<span class="text-[9rem]">%</span>
-            </div>
-            
-            <!-- Nội dung text gom gọn bên dưới -->
-            <div class="w-full">
-                <h2 class="text-h2 font-display text-white mb-4">Khoảng Trống Điều Trị</h2>
-                <div class="divider bg-accent-alert/40 my-4"></div>
-                <p class="text-body px-4 font-medium">Thanh thiếu niên Việt Nam có vấn đề tâm thần nhưng <strong class="text-white">không tiếp cận được</strong> dịch vụ y tế.</p>
+            <div id="mobile-menu" class="md:hidden flex flex-col gap-4 mt-4 text-center text-sm opacity-80 border-t border-white/10 pt-4">
+                <a href="#context" onclick="toggleMenu()">Bối Cảnh</a>
+                <a href="#data" onclick="toggleMenu()">Số Liệu</a>
+                <a href="#solutions" onclick="toggleMenu()">Giải Pháp</a>
             </div>
         </div>
+    </nav>
 
-        <!-- 3. BỐI CẢNH (Middle) -->
-        <div class="col-span-4 row-span-5 infographic-card border-economy">
-            <span class="badge">01. Bối Cảnh Vĩ Mô</span>
-            <h2 class="text-h1 font-display text-accent-primary mb-8 drop-shadow-md">Áp Lực Kép &<br>Sự Kiệt Sức</h2>
-            
-            <div class="space-y-6 flex-1 flex flex-col justify-center">
-                <!-- Stat Block 1 -->
-                <div class="bg-black/50 p-8 rounded-3xl border border-white/20 flex gap-6 hover:bg-white/5 transition-colors items-center h-full">
-                    <i class="fa-solid fa-chart-line text-6xl text-gray-300"></i>
+    <!-- HERO SECTION -->
+    <header class="pt-36 pb-24 px-6 max-w-7xl mx-auto text-center reveal active relative z-10">
+        <span class="inline-block py-1.5 px-5 rounded-full bg-accent-10 border border-theme-accent text-accent text-xs font-bold tracking-widest mb-8 hover:bg-white/10 transition uppercase shadow-[0_0_15px_rgba(var(--theme-accent-rgb),0.2)]">
+            Báo Cáo Xu Hướng 2025
+        </span>
+        <!-- Sử dụng Font Serif (Playfair Display) cho cảm giác Editorial -->
+        <h1 class="fluid-h1 font-serif font-bold mb-6 pb-4 drop-shadow-2xl leading-tight">
+            GEN Z VÀ CƠN BÃO<br> <span class="text-accent italic">"ĐA KHỦNG HOẢNG"</span>
+        </h1>
+        <p class="fluid-p max-w-3xl mx-auto leading-relaxed font-light mb-12 opacity-90 text-slate-200">
+            Không chỉ là buồn chán. Đây là sự hội tụ của <span class="text-accent font-normal border-b border-theme-accent/50">áp lực số</span>, <span class="text-accent font-normal border-b border-theme-accent/50">bất ổn kinh tế</span> và sự đứt gãy của các khế ước xã hội truyền thống.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#context" class="cta-button">
+                Khám Phá Ngay <i class="fa-solid fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 pb-24 space-y-32 relative z-10">
+
+        <!-- SECTION 1: BENTO GRID -->
+        <section id="context" class="reveal">
+            <div class="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
+                <h2 class="text-4xl font-serif font-bold italic">01. Bối Cảnh Vĩ Mô</h2>
+                <span class="text-xs opacity-60 font-mono hidden sm:block">GRID-AREA: ASYMMETRICAL</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+                <!-- Economy -->
+                <div class="glass-panel p-8 md:col-span-2 lg:col-span-2 flex flex-col justify-between group" onclick="openModal('economy')">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition duration-300 text-accent"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <div class="flex justify-between items-start">
+                        <div class="h-12 w-12 rounded-full bg-accent-10 flex items-center justify-center text-accent text-2xl"><i class="fa-solid fa-chart-line"></i></div>
+                        <span class="text-xs font-mono opacity-70 border border-white/20 px-2 py-1 rounded">FED 2024</span>
+                    </div>
                     <div>
-                        <h3 class="text-h2 text-white mb-1">< 2%</h3>
-                        <p class="text-body text-gray-200">Tổng tài sản quốc gia Gen Z nắm giữ. Dẫn đến hành vi <span class="text-accent-primary font-bold">"Doom Spending"</span>.</p>
+                        <h3 class="font-serif font-bold text-3xl mt-6 group-hover:text-accent transition">Kinh Tế Bất Định</h3>
+                        <p class="text-base mt-3 leading-relaxed opacity-80">Gen Z và Millennials chỉ nắm giữ 
+                            <strong class="text-white text-xl counter" data-target="10.5">0</strong><strong class="text-white text-xl">%</strong> 
+                            tài sản quốc gia. Khế ước "làm chăm = giàu" đã vỡ.
+                        </p>
                     </div>
                 </div>
-
-                <!-- Stat Block 2 -->
-                <div class="bg-black/50 p-8 rounded-3xl border border-white/20 flex gap-6 hover:bg-white/5 transition-colors items-center h-full">
-                    <i class="fa-solid fa-people-roof text-6xl text-gray-300"></i>
-                    <div>
-                        <h3 class="text-h2 text-white mb-1">Bộ Lạc Kangaroo</h3>
-                        <p class="text-body text-gray-200">56% thanh niên Hàn Quốc sống phụ thuộc cha mẹ, <span class="text-white font-semibold">từ chối trưởng thành</span>.</p>
+                <!-- Tech -->
+                <div class="glass-panel p-8 md:row-span-2 lg:row-span-2 border-t-4 border-accent flex flex-col group" onclick="openModal('tech')">
+                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition text-accent"><i class="fa-regular fa-eye"></i></div>
+                    <div class="h-12 w-12 rounded-full bg-accent-10 flex items-center justify-center text-accent text-2xl mb-auto"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3 class="font-serif font-bold text-3xl mt-6 mb-2">Kiệt Sức Số</h3>
+                    <p class="text-sm mb-4 opacity-80">Hiện tượng "Brain Rot" lan rộng do tiêu thụ nội dung ngắn.</p>
+                    <div class="bg-accent-10 p-5 rounded-2xl border border-accent mt-auto relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-accent rounded-full blur-2xl opacity-20 -mr-10 -mt-10"></div>
+                        <span class="text-xs opacity-80 uppercase font-bold tracking-wider">Ngưỡng Nguy Hiểm</span>
+                        <div class="flex items-baseline gap-1 my-1">
+                            <strong class="text-5xl font-serif counter" data-target="3">0</strong>
+                            <span class="text-lg opacity-70">h/ngày</span>
+                        </div>
+                        <p class="text-xs text-accent font-medium">Tăng gấp đôi nguy cơ trầm cảm</p>
                     </div>
+                </div>
+                <!-- Asia -->
+                <div class="glass-panel p-8 flex flex-col justify-between group" onclick="openModal('asia')">
+                    <div class="h-10 w-10 rounded-full bg-accent-10 flex items-center justify-center text-accent text-xl mb-4"><i class="fa-solid fa-earth-asia"></i></div>
+                    <div>
+                        <h3 class="font-serif font-bold text-2xl group-hover:text-accent transition">Áp Lực Á Đông</h3>
+                        <p class="text-xs mt-2 opacity-80">Từ "Nội cuốn" đến "Nằm thẳng".</p>
+                    </div>
+                </div>
+                <!-- Quote -->
+                <div class="glass-panel p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center text-center md:col-span-1 lg:col-span-1 border-dashed border-white/20">
+                    <p class="font-serif italic text-lg opacity-80 leading-relaxed">"Chúng ta không lười biếng,<br>chúng ta kiệt sức."</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 4. DỮ LIỆU (Right Column) -->
-        <div class="col-span-4 row-span-8 infographic-card border-data">
-            <span class="badge" style="color: #a5b4fc; border-color: #818cf8;">02. Dữ Liệu Chuyên Sâu</span>
-            
-            <!-- Chart 1 -->
-            <div class="mb-8 flex-1 flex flex-col">
-                <h3 class="text-h2 font-display mb-4">Tỷ Lệ Trầm Cảm</h3>
-                <div class="flex-1 w-full bg-black/30 rounded-3xl p-4 border border-white/10 relative">
-                    <div class="absolute inset-0 p-4">
+        <!-- SECTION 2: DATA & GENDER CHART -->
+        <section id="data" class="space-y-12 reveal">
+            <h2 class="text-4xl font-serif font-bold border-l-4 border-accent pl-6 italic">02. Dữ Liệu Biết Nói</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- GENDER CHART - ACTIVE TITLE -->
+                <div class="lg:col-span-2 glass-panel p-8" onclick="openModal('gender')">
+                    <h3 class="text-xl font-bold mb-6 flex justify-between items-center">
+                        <span class="text-accent">Nữ giới & LGBTQ+ Chịu Áp Lực Cao Nhất</span>
+                        <span class="text-[10px] opacity-60 font-normal py-1 px-2 border border-white/20 rounded bg-white/5">Nguồn: CDC YRBS 2023</span>
+                    </h3>
+                    <div class="chart-container">
                         <canvas id="genderChart"></canvas>
                     </div>
                 </div>
-                <div class="legend-box">
-                    <div class="legend-item"><span class="dot bg-white"></span>Nam (28%)</div>
-                    <div class="legend-item"><span class="dot bg-indigo-400"></span>Nữ (53%)</div>
-                    <div class="legend-item text-purple-300 font-bold"><span class="dot bg-purple-400"></span>LGBTQ+ (65.7%)</div>
+                
+                <!-- GENDER INSIGHT -->
+                <div class="glass-panel p-8 bg-gradient-to-b from-accent-10 to-transparent border-t-2 border-accent flex flex-col justify-between" onclick="openModal('gender')">
+                    <div>
+                        <h4 class="text-accent font-serif font-bold text-2xl mb-4 flex items-center gap-2"><i class="fa-solid fa-venus-mars"></i> Phân Tích Sâu</h4>
+                        <p class="text-sm leading-7 mb-4 opacity-90">
+                            Sự chênh lệch lớn giữa các nhóm giới tính phản ánh các áp lực xã hội khác nhau. Đặc biệt là vấn đề <strong>"Căng thẳng Thiểu số"</strong> và <strong>"Nghịch lý tự tử"</strong>.
+                        </p>
+                    </div>
+                    <button class="text-xs font-bold uppercase tracking-wider border-b border-accent pb-1 w-fit flex items-center gap-2 text-accent hover:opacity-80 transition">
+                        Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </div>
-                <p class="text-body mt-2 text-indigo-200 text-center"><i class="fa-solid fa-circle-info mr-2"></i><strong>LGBTQ+</strong> chịu áp lực gấp đôi.</p>
             </div>
 
-            <div class="divider"></div>
-
-            <!-- Chart 2: TẬN DỤNG KHOẢNG TRẮNG ĐỂ CHART TO HƠN -->
-            <div class="flex-1 flex flex-col justify-between">
-                <h3 class="text-h2 font-display mb-2">Ngưỡng Rủi Ro Số</h3>
-                
-                <!-- Container chart mở rộng tối đa -->
-                <div class="flex-1 w-full flex items-center justify-center relative min-h-0 py-4">
-                    <div class="w-full h-full relative">
-                         <canvas id="screenChart"></canvas>
-                    </div>
-                    <!-- Chữ trung tâm cực đại 7rem -->
-                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-4">
-                        <span class="text-[7rem] font-bold font-display leading-none text-white drop-shadow-lg">3h</span>
-                        <span class="text-2xl font-mono uppercase text-gray-200 mt-2">Điểm Bùng Phát</span>
+            <!-- GAP & SCREEN TIME -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="glass-panel p-8" onclick="openModal('gap')">
+                    <h3 class="text-xl font-bold mb-2"><span class="text-danger-red-safe">91.6%</span> Thanh Thiếu Niên Bị Bỏ Lại</h3>
+                    <p class="text-xs opacity-60 mb-6 border-b border-white/5 pb-2">Khoảng cách điều trị tại Việt Nam</p>
+                    <div class="grid grid-cols-2 gap-6 items-center h-full pb-4">
+                        <div class="relative h-56 w-full flex justify-center">
+                            <canvas id="gapChart"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                <span class="text-5xl font-serif font-bold counter" data-target="91.6">0</span><span class="text-2xl font-bold">%</span>
+                            </div>
+                        </div>
+                        <div class="text-sm space-y-4">
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 relative">
+                                <div class="absolute left-0 top-0 bottom-0 w-1 bg-danger-red rounded-l-xl"></div>
+                                <span class="block opacity-60 text-xs uppercase tracking-wide">Không tiếp cận</span>
+                                <span class="text-2xl font-bold">91.6%</span>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 relative">
+                                <div class="absolute left-0 top-0 bottom-0 w-1 bg-slate-500 rounded-l-xl"></div>
+                                <span class="block opacity-60 text-xs uppercase tracking-wide">Tiếp cận được</span>
+                                <span class="text-2xl font-bold">8.4%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="flex justify-between mt-2 px-2 text-center pb-2">
-                    <div><span class="block text-4xl font-bold text-green-400 drop-shadow">< 2h</span><span class="text-xl text-gray-300">An toàn</span></div>
-                    <div><span class="block text-4xl font-bold text-red-400 drop-shadow">5h+</span><span class="text-xl text-gray-300">Nguy hiểm</span></div>
+
+                <div class="glass-panel p-8" onclick="openModal('screen_risk')">
+                    <h3 class="text-xl font-bold mb-2">Ngưỡng Rủi Ro: 3 Giờ/Ngày</h3>
+                    <p class="text-xs opacity-60 mb-6 border-b border-white/5 pb-2">Thời gian dùng MXH vs Nguy cơ Tâm lý</p>
+                    <div class="chart-container">
+                        <canvas id="screenTimeChart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 5. CƠ CHẾ (Bottom Left - Wide) -->
-        <div class="col-span-8 row-span-4 infographic-card border-mech">
-            <span class="badge" style="color: #f9a8d4; border-color: #f472b6;">03. Cơ Chế Thần Kinh</span>
-            <div class="flex items-center gap-8 h-full">
-                <div class="w-1/3">
-                    <h2 class="text-h1 font-display text-pink-400 mb-4 drop-shadow-md">Vòng Lặp<br>Dopamine</h2>
-                    <p class="text-body text-gray-100">
-                        Video ngắn 15s hoạt động như máy đánh bạc (Slot Machine). Sự <strong class="text-pink-300">không chắc chắn (Uncertainty)</strong> khiến não bộ bị "kẹt".
+        <!-- SECTION 3: MECHANISM -->
+        <section id="mechanism" class="reveal">
+            <div class="glass-panel p-8 md:p-12 relative overflow-hidden" onclick="openModal('mechanism')">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-accent-10 rounded-full blur-[120px] opacity-30"></div>
+                
+                <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-serif font-bold mb-6 italic">03. Cơ Chế <span class="text-accent">Dopamine</span></h2>
+                        <p class="mb-6 leading-relaxed opacity-90 text-lg">
+                            Tại sao chúng ta nghiện lướt? Video ngắn sử dụng cơ chế <strong>"Phần thưởng biến đổi"</strong> giống hệt máy đánh bạc.
+                        </p>
+                        <ul class="space-y-4 text-sm opacity-80">
+                            <li class="flex items-center gap-4 bg-white/5 p-3 rounded-lg"><i class="fa-solid fa-bolt text-accent text-xl"></i> Kích thích tức thì (15s)</li>
+                            <li class="flex items-center gap-4 bg-white/5 p-3 rounded-lg"><i class="fa-solid fa-dice text-accent text-xl"></i> Không thể dự đoán (Unpredictability)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="relative bg-black/40 rounded-2xl border border-white/10 p-10 flex flex-col md:flex-row items-center justify-center gap-4 shadow-2xl">
+                        <div class="flex flex-col items-center gap-3 w-28">
+                            <div class="w-20 h-20 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-3xl opacity-70"><i class="fa-solid fa-hand-pointer"></i></div>
+                            <span class="text-xs font-bold opacity-60 tracking-widest">HÀNH ĐỘNG</span>
+                        </div>
+                        <div class="h-10 w-0.5 md:h-0.5 md:w-10 bg-white/20"></div>
+                        <div class="flex flex-col items-center gap-3 w-28 scale-110">
+                            <div class="w-24 h-24 rounded-full bg-accent-10 shadow-[0_0_50px_rgba(255,255,255,0.15)] flex items-center justify-center text-accent text-5xl animate-bounce"><i class="fa-solid fa-gift"></i></div>
+                            <span class="text-xs font-bold text-accent tracking-widest">THƯỞNG</span>
+                        </div>
+                        <div class="h-10 w-0.5 md:h-0.5 md:w-10 bg-white/20"></div>
+                        <div class="flex flex-col items-center gap-3 w-28">
+                            <div class="w-20 h-20 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-3xl opacity-70"><i class="fa-solid fa-rotate"></i></div>
+                            <span class="text-xs font-bold opacity-60 tracking-widest">LẶP LẠI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SOLUTIONS -->
+        <section id="solutions" class="reveal pb-10">
+            <h2 class="text-4xl font-serif font-bold mb-12 text-center italic">04. Chiến Lược Hành Động</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-panel p-10 border-l-4 border-accent hover:bg-accent-10 group" onclick="openModal('safety')">
+                    <h3 class="text-2xl font-bold text-accent mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-shield-halved text-3xl group-hover:scale-110 transition"></i> Vùng An Toàn Số
+                    </h3>
+                    <p class="text-base opacity-90 leading-relaxed">
+                        Chuyển dịch sang <strong>Private Messaging</strong> (Zalo, Discord kín). Tương tác nhóm nhỏ tăng sự gắn kết và giảm lo âu hơn mạng xã hội mở.
                     </p>
                 </div>
-                <div class="w-2/3 bg-black/50 rounded-[3rem] p-8 flex justify-between items-center relative border border-white/20 h-full">
-                    <!-- Steps -->
-                    <div class="text-center z-10 flex flex-col justify-center">
-                        <i class="fa-solid fa-hand-pointer text-5xl text-white mb-2 drop-shadow"></i>
-                        <div class="text-2xl font-bold text-white">Kích Thích</div>
-                        <div class="text-lg text-gray-300">Video 15s</div>
-                    </div>
-                    
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-400"></i>
-                    
-                    <div class="text-center z-10 transform scale-110 flex flex-col justify-center">
-                        <div class="w-32 h-32 mx-auto rounded-full bg-pink-500/30 border-4 border-pink-400 flex items-center justify-center mb-4 shadow-[0_0_60px_rgba(236,72,153,0.5)]">
-                            <i class="fa-solid fa-gift text-6xl text-pink-400"></i>
-                        </div>
-                        <div class="text-3xl font-bold text-pink-300">Phần Thưởng</div>
-                        <div class="text-xl text-gray-200">Biến đổi</div>
-                    </div>
-                    
-                    <i class="fa-solid fa-arrow-right text-4xl text-gray-400"></i>
-                    
-                    <div class="text-center z-10 flex flex-col justify-center">
-                        <i class="fa-solid fa-rotate text-5xl text-white mb-2 drop-shadow"></i>
-                        <div class="text-2xl font-bold text-white">Lặp Lại</div>
-                        <div class="text-lg text-gray-300">Vô thức</div>
-                    </div>
+                <div class="glass-panel p-10 border-l-4 border-accent hover:bg-accent-10 group" onclick="openModal('grounding')">
+                    <h3 class="text-2xl font-bold text-accent mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-tree text-3xl group-hover:scale-110 transition"></i> Kết Nối Thực Tại
+                    </h3>
+                    <p class="text-base opacity-90 leading-relaxed">
+                        Tham gia hành động cụ thể (trồng cây, tình nguyện) để lấy lại cảm giác kiểm soát (Agency) trước lo âu. Kỹ thuật <strong>Grounding 5-4-3-2-1</strong>.
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 6. GIẢI PHÁP (Bottom Right) -->
-        <div class="col-span-12 row-span-4 grid grid-cols-2 gap-8 mt-[-1.5rem] pt-[1.5rem]"> 
-            
-            <!-- LEFT: Private Messaging (Đã bổ sung nội dung) -->
-            <div class="infographic-card border-sol flex flex-col items-center justify-start text-center h-full pt-8">
-                <span class="badge mb-6" style="color: #6ee7b7; border-color: #34d399;">04. Giải Pháp: Vùng An Toàn</span>
-                <i class="fa-solid fa-shield-halved text-[6rem] text-emerald-400 mb-6 drop-shadow-[0_0_25px_rgba(52,211,153,0.4)]"></i>
-                <h3 class="text-3xl font-bold text-white mb-6">Private Messaging</h3>
-                
-                <div class="text-left w-full px-8 space-y-4">
-                     <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
-                        <p class="text-body text-gray-100"><strong class="text-emerald-300">Micro-Community:</strong> Chuyển từ "lướt" public feed sang tương tác sâu trong nhóm nhỏ (Zalo/Discord).</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                    <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
-                        <p class="text-body text-gray-100"><strong class="text-emerald-300">No Filter:</strong> Giảm áp lực trình diễn (Performance Pressure), tăng sự chân thật và thấu cảm.</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                     <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-check text-emerald-400 text-3xl mt-1"></i>
-                        <p class="text-body text-gray-100"><strong class="text-emerald-300">Curate Feed:</strong> Chủ động thanh lọc và bỏ theo dõi các nội dung độc hại (Toxic Content).</p>
-                    </div>
-                </div>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40 pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-serif text-3xl italic mb-12 max-w-3xl mx-auto opacity-80 leading-relaxed">"Chúng ta không cần sửa chữa những đứa trẻ,<br>chúng ta cần sửa chữa thế giới mà chúng đang sống."</p>
+            <div class="flex flex-wrap justify-center gap-4 text-xs opacity-60 mb-8 font-mono">
+                <a href="https://www.cdc.gov/yrbs/results/2023-yrbs-results.html" target="_blank" class="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/20 transition">CDC YRBS 2023</a>
+                <a href="https://www.unicef.org/vietnam/" target="_blank" class="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/20 transition">UNICEF Việt Nam</a>
+                <a href="https://www.who.int/" target="_blank" class="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/20 transition">WHO Mental Health</a>
+                <a href="https://www.pewresearch.org/" target="_blank" class="px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/20 transition">Pew Research</a>
             </div>
-
-            <!-- RIGHT: Grounding (Đã trình bày rõ 5 bước) -->
-            <!-- ĐÃ SỬA: BỎ CLASS bg-white/5 -->
-            <div class="infographic-card border-white/50 flex flex-col items-center justify-start text-center h-full pt-8">
-                <span class="badge mb-6" style="color: #fff; border-color: #fff;">05. Kỹ Thuật Grounding</span>
-                <i class="fa-solid fa-tree text-[6rem] text-white mb-6 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"></i>
-                <h3 class="text-3xl font-bold text-white mb-6">Quy Tắc 5-4-3-2-1</h3>
-                
-                <div class="text-left w-full px-12 space-y-3">
-                    <div class="flex items-center gap-6">
-                        <strong class="text-white text-[3rem] w-[1.5rem]">5</strong> 
-                        <p class="text-body text-gray-100">Thứ bạn <span class="text-gray-300">nhìn thấy</span> (Thị giác)</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                    
-                    <div class="flex items-center gap-6">
-                        <strong class="text-white text-[3rem] w-[1.5rem]">4</strong> 
-                        <p class="text-body text-gray-100">Thứ bạn <span class="text-gray-300">chạm được</span> (Xúc giác)</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                    
-                    <div class="flex items-center gap-6">
-                        <strong class="text-white text-[3rem] w-[1.5rem]">3</strong> 
-                        <p class="text-body text-gray-100">Âm thanh bạn <span class="text-gray-300">nghe thấy</span> (Thính giác)</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                    
-                    <div class="flex items-center gap-6">
-                        <strong class="text-white text-[3rem] w-[1.5rem]">2</strong> 
-                        <p class="text-body text-gray-100">Mùi hương bạn <span class="text-gray-300">ngửi được</span> (Khứu giác)</p>
-                    </div>
-                    <div class="w-full h-[1px] bg-white/10"></div>
-                    
-                    <div class="flex items-center gap-6">
-                        <strong class="text-white text-[3rem] w-[1.5rem]">1</strong> 
-                        <p class="text-body text-gray-100">Vị bạn <span class="text-gray-300">nếm được</span> (Vị giác)</p>
-                    </div>
-                </div>
-            </div>
+            <div class="text-[10px] opacity-40 uppercase tracking-[0.2em]">Designed for Gen Z • 2025 Edition</div>
         </div>
+    </footer>
 
-        <!-- 7. FOOTER -->
-        <div class="col-span-12 flex justify-between items-end border-t border-white/30 pt-4 opacity-90 text-white">
-            <div class="text-4xl font-display font-bold">GEN Z RESEARCH LAB • 2025</div>
-            <div class="text-3xl font-mono text-gray-300">DỮ LIỆU: WHO, UNICEF, CDC, YRBS</div>
+    <div id="info-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden-modal p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeModal()"></div>
+        <div class="modal-content relative w-full max-w-2xl rounded-2xl p-10 text-left overflow-y-auto max-h-[90vh]">
+            <button onclick="closeModal()" class="absolute top-6 right-6 opacity-70 hover:opacity-100 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div id="modal-body"></div>
         </div>
-
     </div>
 
     <script>
-        // CẤU HÌNH BIỂU ĐỒ CHO KHỔ A0
-        Chart.defaults.font.size = 36;
-        Chart.defaults.font.family = 'Space Grotesk';
-        Chart.defaults.color = '#f1f5f9';
+        // THEMES
+        const safeThemes = [
+            { bg: '#121212', text: '#F8FAFC', accent: '#FDA4AF', rgb: '253, 164, 175', panel: 'rgba(30, 41, 59, 0.4)', gradient: 'radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)' },
+            { bg: '#0f172a', text: '#f1f5f9', accent: '#5EEAD4', rgb: '94, 234, 212', panel: 'rgba(15, 23, 42, 0.6)', gradient: 'radial-gradient(at 10% 10%, #0c4a6e 0, transparent 50%), radial-gradient(at 90% 90%, #115e59 0, transparent 50%)' },
+            { bg: '#1c1917', text: '#fafaf9', accent: '#d6d3d1', rgb: '214, 211, 209', panel: 'rgba(41, 37, 36, 0.6)', gradient: 'radial-gradient(at 50% 0%, #44403c 0, transparent 60%), radial-gradient(at 0% 100%, #292524 0, transparent 50%)' },
+            { bg: '#000000', text: '#ffffff', accent: '#d8b4fe', rgb: '216, 180, 254', panel: 'rgba(38, 38, 38, 0.6)', gradient: 'radial-gradient(at 100% 0%, #581c87 0, transparent 40%), radial-gradient(at 0% 50%, #312e81 0, transparent 40%)' },
+            { bg: '#022c22', text: '#ecfdf5', accent: '#fde047', rgb: '253, 224, 71', panel: 'rgba(2, 44, 34, 0.6)', gradient: 'radial-gradient(at 0% 100%, #14532d 0, transparent 50%), radial-gradient(at 100% 0%, #166534 0, transparent 50%)' }
+        ];
+
+        let currentThemeIndex = 0;
+
+        function applyTheme(theme) {
+            const root = document.documentElement;
+            root.style.setProperty('--theme-bg', theme.bg);
+            root.style.setProperty('--theme-text', theme.text);
+            root.style.setProperty('--theme-accent', theme.accent);
+            root.style.setProperty('--theme-accent-rgb', theme.rgb);
+            root.style.setProperty('--theme-panel', theme.panel);
+            root.style.setProperty('--bg-gradient', theme.gradient);
+            
+            if (window.myGenderChart) {
+                window.myGenderChart.data.datasets[0].borderColor = [theme.accent, theme.accent, theme.accent];
+                window.myGenderChart.data.datasets[0].backgroundColor = [
+                    colorMix(theme.accent, 0.6), colorMix(theme.accent, 0.6), colorMix(theme.accent, 0.6)
+                ];
+                window.myGenderChart.update();
+            }
+             if (window.myScreenChart) {
+                window.myScreenChart.data.datasets[0].borderColor = theme.accent;
+                 window.myScreenChart.data.datasets[0].backgroundColor = (ctx) => {
+                    const grad = ctx.chart.ctx.createLinearGradient(0,0,0,200);
+                    grad.addColorStop(0, colorMix(theme.accent, 0.2)); 
+                    grad.addColorStop(1, colorMix(theme.accent, 0));
+                    return grad;
+                };
+                window.myScreenChart.update();
+            }
+        }
+
+        function colorMix(hex, alpha) {
+            const r = parseInt(hex.slice(1, 3), 16),
+                  g = parseInt(hex.slice(3, 5), 16),
+                  b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        function applyRandomTheme() {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * safeThemes.length);
+            } while (newIndex === currentThemeIndex && safeThemes.length > 1);
+            
+            currentThemeIndex = newIndex;
+            applyTheme(safeThemes[currentThemeIndex]);
+        }
+
+        applyTheme(safeThemes[0]); // Default Fixed Theme
+
+        // SCROLL & COUNTER
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+        });
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = (progress * (end - start) + start).toFixed(1).replace('.0', '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { 
+                if(e.isIntersecting) {
+                    e.target.classList.add('active');
+                    const counters = e.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = parseFloat(counter.getAttribute('data-target'));
+                        animateValue(counter, 0, target, 2000);
+                        counter.classList.remove('counter'); 
+                    });
+                } 
+            });
+        }, { threshold: 0.1 });
         
-        // 1. Gender Chart
-        new Chart(document.getElementById('genderChart'), {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // DATA STORE
+        const modalData = {
+            economy: {
+                title: "Khủng Hoảng Kinh Tế & Chi Tiêu Giải Tỏa",
+                icon: "fa-chart-line",
+                content: `<div class="space-y-6"><p class="text-xl font-serif italic opacity-90">"Nghịch lý Gen Z: Làm việc nhiều hơn, sở hữu ít hơn."</p><div class="grid sm:grid-cols-2 gap-6 my-6"><div class="bg-accent-10 p-6 rounded-2xl border border-white/10"><strong class="block mb-2 text-lg font-serif">Chi tiêu giải tỏa (Doom Spending)</strong><p class="text-sm opacity-70 leading-relaxed">Mua sắm niềm vui nhỏ (trà sữa, blind box) vì mục tiêu lớn (mua nhà) quá xa vời.</p></div><div class="bg-accent-10 p-6 rounded-2xl border border-white/10"><strong class="block mb-2 text-lg font-serif">Sống mòn (Paycheck-to-Paycheck)</strong><p class="text-sm opacity-70 leading-relaxed">56% Gen Z sống dựa vào lương tháng, không có tích lũy (Deloitte 2024).</p></div></div></div>`
+            },
+            tech: {
+                title: "Hiệu Ứng 'Brain Rot' (Mụ Mẫm Não Bộ)",
+                icon: "fa-mobile-screen",
+                content: `<div class="space-y-6"><p class="text-lg opacity-90">Trạng thái sương mù não do tiêu thụ nội dung phân mảnh quá mức.</p><ul class="space-y-4 mt-4"><li class="flex gap-4 text-base opacity-80"><i class="fa-solid fa-bolt text-accent mt-1 text-xl"></i><span><strong>Suy giảm chú ý:</strong> Mất khả năng tập trung sâu (Deep Work) do quen với nhịp 15 giây.</span></li><li class="flex gap-4 text-base opacity-80"><i class="fa-solid fa-moon text-accent mt-1 text-xl"></i><span><strong>Rối loạn giấc ngủ:</strong> Ánh sáng xanh ngăn cản quá trình phục hồi não bộ.</span></li></ul></div>`
+            },
+            asia: {
+                title: "Hiện Tượng Xã Hội Châu Á",
+                icon: "fa-earth-asia",
+                content: `<div class="space-y-4"><div class="p-6 bg-white/5 rounded-2xl border border-white/10"><strong class="text-lg font-serif">Trung Quốc: "Mặc kệ đời" (Bai Lan)</strong><p class="text-sm opacity-70 mt-2">Chủ động chấp nhận thất bại để tránh áp lực kỳ vọng.</p></div><div class="p-6 bg-white/5 rounded-2xl border border-white/10"><strong class="text-lg font-serif">Hàn Quốc: "Bộ Lạc Kangaroo"</strong><p class="text-sm opacity-70 mt-2">56% thanh niên sống bám cha mẹ, trì hoãn kết hôn do giá nhà.</p></div></div>`
+            },
+            gender: {
+                title: "Phân Tích Sâu: Bức Tranh Giới Tính",
+                icon: "fa-venus-mars",
+                content: `
+                    <div class="space-y-6">
+                        <div class="p-5 rounded-2xl bg-accent-10 border border-accent">
+                            <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-venus text-accent text-xl"></i><strong class="text-lg font-serif">Nữ Giới (53%) - Áp Lực Hướng Ngoại</strong></div>
+                            <ul class="list-disc ml-6 text-sm opacity-80 space-y-2"><li><strong>So sánh xã hội:</strong> Thuật toán MXH ưu tiên hiển thị cơ thể "hoàn hảo", gây tự ti ngoại hình.</li><li><strong>Bạo lực mạng:</strong> Tỷ lệ bị quấy rối tình dục online cao hơn.</li></ul>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-transgender text-accent text-xl"></i><strong class="text-lg font-serif">LGBTQ+ (65.7%) - Căng Thẳng Thiểu Số</strong></div>
+                            <ul class="list-disc ml-6 text-sm opacity-80 space-y-2"><li><strong>Minority Stress:</strong> Sự kỳ thị từ gia đình tạo "tải trọng tâm lý" thường trực.</li><li><strong>Nguy cơ cao:</strong> Tỷ lệ ý định tự tử gấp 3 lần nhóm dị tính.</li></ul>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-mars text-accent text-xl"></i><strong class="text-lg font-serif">Nam Giới (28%) - Nghịch Lý Tự Tử</strong></div>
+                            <ul class="list-disc ml-6 text-sm opacity-80 space-y-2"><li><strong>Nghịch lý:</strong> Ý định tự tử thấp hơn Nữ, nhưng tỷ lệ tử vong cao hơn.</li><li><strong>Biểu hiện ẩn:</strong> Thể hiện qua sự cáu giận thay vì buồn bã.</li></ul>
+                        </div>
+                    </div>`
+            },
+            gap: {
+                title: "Khoảng Trống Y Tế: Từ Rào Cản Đến Giải Pháp",
+                icon: "fa-hospital",
+                content: `<div class="space-y-8"><div class="text-center p-8 bg-gradient-to-b from-danger-red/10 to-transparent rounded-2xl border border-danger-red/20"><span class="text-6xl font-serif font-bold block mb-2">91.6%</span><span class="text-sm opacity-60 uppercase tracking-widest font-bold">Thanh Thiếu Niên Không Được Hỗ Trợ</span></div><div class="grid sm:grid-cols-3 gap-4"><div class="bg-white/5 p-5 rounded-2xl border border-white/10 hover:border-danger-red-safe/50 transition"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-user-doctor opacity-60 text-xl"></i><h4 class="text-sm font-bold">Thiếu Nhân Lực</h4></div><p class="text-xs opacity-70 mb-3 leading-relaxed">Quá ít chuyên gia tâm lý học đường.</p><p class="text-xs text-accent font-bold bg-accent-10 inline-block px-2 py-1 rounded">Giải pháp: Đào tạo sơ cấp cứu tâm lý.</p></div><div class="bg-white/5 p-5 rounded-2xl border border-white/10 hover:border-danger-red-safe/50 transition"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-comments opacity-60 text-xl"></i><h4 class="text-sm font-bold">Định Kiến</h4></div><p class="text-xs opacity-70 mb-3 leading-relaxed">Coi bệnh tâm lý là "yếu đuối".</p><p class="text-xs text-accent font-bold bg-accent-10 inline-block px-2 py-1 rounded">Giải pháp: Truyền thông bình thường hóa.</p></div><div class="bg-white/5 p-5 rounded-2xl border border-white/10 hover:border-danger-red-safe/50 transition"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-coins opacity-60 text-xl"></i><h4 class="text-sm font-bold">Tài Chính</h4></div><p class="text-xs opacity-70 mb-3 leading-relaxed">Chi phí trị liệu quá cao.</p><p class="text-xs text-accent font-bold bg-accent-10 inline-block px-2 py-1 rounded">Giải pháp: Phát triển Telehealth giá rẻ.</p></div></div></div>`
+            },
+            screen_risk: {
+                title: "Ngưỡng Rủi Ro: 3 Giờ",
+                icon: "fa-triangle-exclamation",
+                content: `<div class="space-y-4 mt-2"><div class="flex justify-between items-center bg-white/5 p-4 rounded-xl"><span class="text-green-400 font-bold text-lg">< 2h</span><span class="text-sm opacity-60">Vùng an toàn</span></div><div class="flex justify-between items-center bg-yellow-safe/10 p-4 rounded-xl border border-yellow-safe/20"><span class="text-yellow-safe font-bold text-lg">> 3h</span><span class="text-sm opacity-90 font-bold">Điểm bùng phát rủi ro</span></div><div class="flex justify-between items-center bg-danger-red/10 p-4 rounded-xl"><span class="text-danger-red font-bold text-lg">5h+</span><span class="text-sm opacity-60">Nguy cơ tự hại cao</span></div></div>`
+            },
+            mechanism: {
+                title: "Cơ Chế Nghiện Video Ngắn",
+                icon: "fa-microchip",
+                content: `<p class="text-lg opacity-90 leading-relaxed">Sự <strong>Không chắc chắn</strong> (Uncertainty) về nội dung tiếp theo kích thích Dopamine mạnh hơn cả phần thưởng thực tế.</p>`
+            },
+            safety: { title: "Vùng An Toàn Số", icon: "fa-shield", content: "<p class='text-lg opacity-90 leading-relaxed'>Thanh lọc feed, unfollow tài khoản độc hại. Chuyển sang nhóm chat kín.</p>" },
+            grounding: { title: "Tiếp Đất (Grounding)", icon: "fa-leaf", content: "<p class='text-lg opacity-90 leading-relaxed'>Kỹ thuật 5-4-3-2-1: Tìm 5 thứ nhìn thấy, 4 thứ chạm được... để kéo não về thực tại.</p>" }
+        };
+
+        const modal = document.getElementById('info-modal');
+        const modalBody = document.getElementById('modal-body');
+
+        function openModal(key) {
+            const data = modalData[key];
+            if (!data) return;
+            modalBody.innerHTML = `
+                <div class="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
+                    <div class="w-14 h-14 rounded-full bg-accent-10 flex items-center justify-center text-accent text-2xl shadow-[0_0_20px_rgba(var(--theme-accent-rgb),0.3)]"><i class="fa-solid ${data.icon}"></i></div>
+                    <h2 class="text-3xl font-serif font-bold">${data.title}</h2>
+                </div>
+                ${data.content}
+            `;
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeModal(); });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMenu() {
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+        menuBtn.addEventListener('click', toggleMenu);
+
+        Chart.defaults.color = 'rgba(255, 255, 255, 0.6)'; 
+        Chart.defaults.font.family = 'Inter';
+
+        const ctxGap = document.getElementById('gapChart').getContext('2d');
+        new Chart(ctxGap, {
+            type: 'doughnut',
+            data: {
+                labels: ['Không tiếp cận', 'Tiếp cận được'],
+                datasets: [{
+                    data: [91.6, 8.4],
+                    backgroundColor: ['#EF4444', '#334155'], 
+                    borderWidth: 0, hoverOffset: 8, cutout: '75%'
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                onClick: () => openModal('gap')
+            }
+        });
+
+        const ctxGender = document.getElementById('genderChart').getContext('2d');
+        window.myGenderChart = new Chart(ctxGender, {
             type: 'bar',
             data: {
                 labels: ['Nam', 'Nữ', 'LGBTQ+'],
                 datasets: [{
+                    label: 'Tỷ lệ (%)',
                     data: [28, 53, 65.7],
-                    backgroundColor: ['rgba(255,255,255,0.3)', '#818cf8', '#c084fc'],
-                    borderWidth: 0,
-                    borderRadius: 20,
-                    barThickness: 80
+                    backgroundColor: ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.2)', 'rgba(255,255,255,0.2)'],
+                    borderColor: ['#fff', '#fff', '#fff'],
+                    borderWidth: 1, borderRadius: 6
                 }]
             },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { display: false },
-                    y: { 
-                        grid: { display: false },
-                        ticks: { font: { size: 36, weight: 'bold' }, color: '#ffffff' } 
-                    }
-                },
-                animation: false
-            }
+            options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.05)' } }, y: { grid: { display: false } } }, onClick: () => openModal('gender') }
         });
 
-        // 2. Screen Time Chart
-        new Chart(document.getElementById('screenChart'), {
-            type: 'doughnut',
+        const ctxScreen = document.getElementById('screenTimeChart').getContext('2d');
+        window.myScreenChart = new Chart(ctxScreen, {
+            type: 'line',
             data: {
-                labels: ['An toàn', 'Rủi ro', 'Nguy hiểm'],
+                labels: ['< 2h', '2-3h', '3h+', '5h+'],
                 datasets: [{
-                    data: [30, 40, 30],
-                    backgroundColor: ['#34d399', '#facc15', '#f87171'],
-                    borderWidth: 0,
-                    cutout: '70%'
+                    label: 'Rủi ro', data: [10, 15, 30, 48], 
+                    borderColor: '#fff',
+                    backgroundColor: 'rgba(255,255,255,0.1)',
+                    fill: true, tension: 0.4, borderWidth: 2, pointBackgroundColor: 'rgba(0,0,0,0)'
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                animation: false
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false } } }, onClick: () => openModal('screen_risk') }
         });
+
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
